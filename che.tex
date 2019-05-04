@@ -55,6 +55,7 @@ This trend is also visible in Googles searches \ref{fig:digdocker}.
 Figure \ref{fig:digdocker} shows the steadily rising interest in the most popular cloud technologies. 
 Docker is a container-engine enabling OS-Virtualization, Kubernetes is a Container-Platform manager and Openshift is a software-suite based on Kubernetes. 
 These technologies will be summarized in \ref{subsec:Req}.  
+
 As cloud-technology such technologies are referred which achieve five attributes: 
 On-demand self-service, broad network-access, resource pooling, rapid elasticity and measured service \cite{ME11}. 
 Cloud technology usually splits into two components:  Infrastructure  and  Services,  where  docker and Kubernetes are considered infrastructure and provide a  platform  to  host  services.  
@@ -79,11 +80,13 @@ There are courses to teach either classic virtualization or docker-basics, but t
 Meanwhile,  the  annual  Stackoverflow  developersurvey \cite{SO19} showed, that DevOps-engineers are not only 
 amongst the most wanted and most paid jobs but also tend to be the happiest participants.  
 Every student either wants to be happy or to be rich, making Cloud an interesting topic for their career. 
+
 So why are there no courses? There are many reasons, but the most prominent is the complexity of the topic: 
 To build a real cloud native application, the developer must understand virtualization, system-administration, development, 
 infrastructure  and  networking. 
 Additionally, the developer needs to use specific tools, know best practices, tests and work in a team.
 All these factors make a high stake for entrance, also  represented in the developersurvey \cite{SO19} which states that most DevOps engineers have a decade of experience, usually in operations topics.
+
 Lucky for us, a new open-source software, Eclipse Che, is on the rise to enable everyone for cloud-native development.
 Che is unlike a normal eclipse distribution: 
 It is hosted on a server and developers get access with their browser. 
@@ -92,8 +95,7 @@ The software build is run inside a docker-container, making it cloud-native by d
 With Version 7 upcoming and prominent support from RedHat, Eclipse Che is not a prototype anymore. 
 The latest distributions of RedHats OpenShift are shipped with Che in default. 
 Therefore, it is worth looking at this possible game-changer. 
-With the first part of this paper, the structure and ideas of Che are explained in more detail, the second part of this pa-
-per covers general arguments about this approach and gives a detailed overview of reachable benefits for education.    
+With the first part of this paper, the structure and ideas of Che are explained in more detail, the second part of this paper covers general arguments about this approach and gives a detailed overview of reachable benefits for education.    
 
 \section{Eclipse Che}
 \label{sec:Che}
@@ -121,6 +123,7 @@ Notable  additions  include  Jenkins,  Gitea,  Sonarqube and lately Che.
 Regarding Che there are no notable changes in handling, as Che is simply run on the build in Kubernetes.
 When run on Kubernetes or Docker Che will require two additional containers for authentification with KeyCloack. 
 For Openshift the standard-openshift authentification is used.  
+
 Eclipse Che  can be run  on any  base-technology  on  localhost – this is rather for demonstrations aswell as for developers working on the Che-Code. 
 When run (locally) on docker, the plugin CheDir enables a portable workspace, 
 which can be used on any docker based Che.
@@ -132,7 +135,7 @@ It is important that an IDE is not required to develop – you can write .java-f
 With that in mind, we can see that the IDE is just a tool to make things (a lot) more comfortable – but you also have requirements such as the JDK, the .Jars you need in your classpath etc. as they are only utilized by your IDE.
 You can consider this stack as your workspace as it contains everything required to work, with the IDE making the workspace comfortable to use.
 Eclipse Che does not work like a normal IDE. 
-Che consists of three main components shown in Figure \ref{fig:cheworkflow}\footnote{source: \url{https://en.wikipedia.org/wiki/Eclipse_Che#/media/File:Eclipse_Che_-_Workflow.PNG}}.
+Che consists of three main components shown in Figure \ref{fig:cheworkflow}\footnote{source: \url{https://en.wikipedia.org/wiki/Eclipse_Che\#/media/File:Eclipse_Che_-_Workflow.PNG}}.
 
 \begin{figure}[h]
 	\centering
@@ -140,7 +143,7 @@ Che consists of three main components shown in Figure \ref{fig:cheworkflow}\foot
 	\caption[Che Workflow]{Che Workflow}
 	\label{fig:cheworkflow}
 \end{figure}
-
+\newpage
 
 \begin{enumerate}
 	\item Workspaces, including Runtimes and IDEs
@@ -159,6 +162,7 @@ Instead of building the .Jar in your remote-workspace, it is build inside a cont
 While this sounds a bit confusing, it makes sense to separate the actual runtime from the workspace. 
 This is also what happens on your machine – you compile an executable and run it separately. 
 Having these runtimes inside a docker-container comes with great benefits, outlined later in this paper.
+
 The second component is the web-based IDE, which is basically a webpage performing the required REST-calls and utility-tasks for the developer. 
 It is sent by the administrative server when an authorized user accesses his workspace via browser. 
 These two components can be enriched with plugins.  
@@ -167,6 +171,7 @@ The difference to a normal IDE plugin is that it has two components:
 One in the workspace-API and one in the hosted web-IDE.  
 Che offers a suite of common plugins dependent on your project. 
 When starting a Maven-project, the workspace is initialized with Maven and Java.
+
 The last component is the Che-administration server. 
 In the administration-server the workspaces are orchestrated and monitored. 
 The authorization is also done at the admin-server and not by every workspace.
@@ -177,6 +182,7 @@ This is done by mounting the workspaces-filesystem  in  your  desktop  IDE.
 This  will grant you access to autocompletion and other features, but you will miss Che specific helpers the web-IDE offers. 
 My personal oppinion is, that mounting remote file systems for development sounds like a infinite source of problems. 
 I expect this feature to be rather a proof of concept.
+
 A single workspace can contain multiple projects, whereof every project will have its own runtime. 
 Projects can either share a versioning control or be separated. 
 You can build whole pods in a single workspace with the single containers being the subprojects. 
@@ -190,6 +196,7 @@ drive-documents.
 This is not to be mixed up with having multiple users work on the same project but on their own workspaces. 
 The code, and the workspace itself, can commonly be shared with any versioning tool like Git.
 It's mostly dependent on the team which kind of cooperation they prefer. 
+
 As  an  interesting  fact,  Eclipse  Che  is  developed  with Eclipse Che, proving that complex cloud development is possible. 
 This so-called \textit{dogfooding} usually leads to a product which puts requirements over any a-priori design or foreign interests.  
 Existing components will be enhanced if working with them becomes troublesome, leaving a clean and valuable core product. 
@@ -200,9 +207,11 @@ The primary goals of Che are twofold:
 First it reduces failure when migrating software into the cloud and enhances the experience of working in a rich remote environment.
 Second is to set up people into existing projects faster and failsafe.
 
+\subsection{Reproduction and Maintenance}
 The university of Arizona showed \cite{CO16}, that about 50\% of software inspected was not able to build. 
 Common reasons are missing, changed or faulty dependencies, leading to the common term of \textit{dependency hell} aswell as unclear documentation. 
 Experienced programmers are usually able to overcome these issues, given enough time. This continues to be an issue \cite{CL14}, and without a different approach probably always will be. 
+
 This problem is solved, if the software is built inside a docker-container and follows the principles of self-containment and image-immutability \cite{BI17}.
 The self-containment principle dictates that  at build-time every required dependency is given, and a fully functional image is created.
 A dockerized maven-application would include java, maven and every required maven package to run the application in the current state. 
@@ -211,20 +220,25 @@ No installations at runtime, no change in ports, no creation of database-schemas
 These two principles, while being optional, lead to always reproducible and functional artifacts.
 The main challenge is to migrate existing software and fulfill these properties. 
 Typically, after making the first iterations of your software on your local machine, dockering it will yield to 100 problems at once, not only being frustrating but taking tons of time. 
+
 With Che, this kind of Big-Bang-Migration is not possible, as from the very first step you are working inside of a docker-container.
 The properties above can be hold with every change to the image and checked in a normal review-process. 
 Problems will arise one at a time and be solved one at a time, whether they are about code or operations. 
 Che therefore embraces the core-ideas of DevOps \cite{HUE12}\cite{JA16} and agile software development \cite{EBE16}.
 That being said, of course it's possible to big-bang-migrate into Che, causing the normal problem mentioned above. 
 However, once the errors are resolved, every further development will work more agile by design.
+
 The artifacts (whether containers or pods) produced with Che are self-contained and immutable, therefore every result is reproducible. 
 Any further development is incremental on the existing images and keeps old artifacts stable. 
 As the code is fully build inside containers and are already run remotely, the famous “It works on my Machine!” is eliminated. 
 This does not only enhance deployments, but also has a big impact on quality assurance and the motivation of developers. 
 You can keep multiple projects in a single workspace and launch multiple pods at once, running the full environment. 
 The behavior of this multipod is unified and testable, making a stable release of full environments possible. 
+
 This is one of the primary goals of the DevOps approach \cite{JA16}. 
 The workspace can therefore form totally new ways of programming, such as IoT Applications \footnote{he Plugin Arktik for Eclipse offered IoT Development with Che.While Arktik is unsupported since February 2019, it proved that the concept worked.} or a full setup of microservices \cite{IV18}, while being agile and reproducible.
+
+\subsection{Faster Setup}
 Onboarding new teammembers is made easy with Che. 
 A newly joining member does not need to install IDEs, languages, tools and packages, he only needs access to his Che-Account and a singular workspace with every dependency build for him.
 Depending on the complexitiy of the project this required atmost an hour. 
@@ -233,6 +247,7 @@ Setting up a complex workplace will also take more time manually.
 The work for this is done automatic and remote, so the user is free to dive into the documentation or have some coffee. 
 His workspace will be able to launch the latest version immidieatly.
 It is also notable, that the (technical) onboarding of developers and operators is streamlined into one single process. 
+
 The combination of a quick setup and the usability of every enhancement makes Che especially interesting to recruit troubleshooters into your projects, which solve some of the very specialiced tasks.  
 With  the  artifacts  being  reproducible,  the  expert  can quickly inspect the subject and analyse problems.
 With a finished workspace he can quickly start working. 
@@ -242,11 +257,12 @@ As an additional minor benefit, it is easy to hibernate resources  using  Che  w
 The workspaces collect metrics like any other container and are therefore scalable on demand. 
 The ability of downscaling the development resources has a big impact on the overall 
 workload. 
-As a further example, the workspaces could be shut down out of normal business-time. This attribute is crucial for a rented infrastructure, which is paid commonly on both workload and storage.  
+As a further example, the workspaces could be shut down out of normal business-time. This attribute is crucial for a rented infrastructure, which is paid commonly on both workload and storage. 
+\subsection{Always On}
 The very first handicap coming with Che is the requirement for a good internet connection. 
 While your normal buro is already equipped with internet, one may want to work on train or there is simply a problem with the WiFi in your hotel.
-With the possibility to setup che on localhost, you can learn the basics and routines offline. 
-As the main benefits come in terms of teamwork, this is not a real solution.
+With the possibility to setup che on localhost, you can learn the basics and routines offline. As the main benefits come in terms of teamwork, this is not a real solution.
+\subsection{Knowledge Required}
 The primary problem with Che is the requirement for an already dense knowledge of cloud related technology.
 Setting up the Workspace, docker-images, build and CI scripts is a complex topic and can not be done by someone getting started. 
 This requirement extends when working with a multipod-environment. 
@@ -254,13 +270,15 @@ While most of the tasks are by themselves rather simple, the bare amount of such
 This can be done by a single expert user, enabling the other developers  to  use  the  build-routines and  environments provided. 
 However, many problems which arise are related to the cloud-environement and will be hard to solve by a novice user, making him dependent on the expert. 
 It's therefore necessary to get everyone on a certain base-level to solve their own problems, otherwise the expert will be overloaded and the project stuck.  
+
+\subsection{Different Workflow}
 Additionally, the missing default “build and run” is a paradigm-shift for many developers, which will take a while to get used to. 
 Clark et al. \cite{CL14} describe this rather as a change in the mindset, than in actual technology: 
 
-TODO CITE CITE CITE
-The primary shift that’s required is not one of new tooling, as most developers already have the basic tooling they need. 
-Rather, the needed shift is one of philosophy. 
-TODO CITE CITE CITE END
+\begin{centering}
+	\textit{"The primary shift that’s required is not one of new tooling, as most developers already have the basic tooling they need.\newline 
+	Rather, the needed shift is one of philosophy."}
+\end{centering}
 
 Intuitively this is true: Every developer needs to setup his own workspace – the skills to do this are already there. 
 The only difference is to setup the workspace in a common, documentated and descriptive way. 
@@ -274,6 +292,7 @@ The debugging and error-analysis inside the container is the same as it would be
 Having meaningful logs with different loglevels and collecting valuable metrics is 
 in general a good attribute for software in any circumstance. 
 It just means additional effort and know-how.  
+
 The last problem is the vulnerability to malevolent users. 
 Someone who already is in possession of a valid account can drain the shared resources of a full cluster, therefore blocking  any  other  user  from  work.
 This  can  also  be achieved by human error. 
@@ -281,13 +300,15 @@ Dependent on the setup, the attacker could also auto-deploy hidden spyware into 
 duction environment. 
 While this is also a problem for normal developer teams, the fast pace of deployments with Che requires additional care. 
 A rich CI/CD environment, such as a well-maintained Jenkins may lead to less-detailed code-reviews, as both unit- and end-to-end-tests succeed.  
-It is therefore important to not only restrict access to project resources, but also the double-check and guard the releases.  
+It is therefore important to not only restrict access to project resources, but also the double-check and guard the releases.
+  
 Some security risks can also emerge from docker-images as well \cite{PE13} but are out of scope for this paper.
 
 \section{Benefits for Education}
 \label{sec:EvalEdu}
 In addition to the previous mentioned benefits, there are more points about Che that are especially important for educational purposes, such as courses in the university, professional school or research departments.
 For simplicity I will only elaborate universities, to which I can best relate.
+\subsection{New motivational and intuitive Courses}
 Eclipse Che provides the possibility to learn primary cloud-technologies hands on and in a simple and supportive manner. 
 Unfortunetally, these topics are currently not widely teached at university.
 Che makes it possible to teach students fundamentals of modern software development.
@@ -295,12 +316,14 @@ Depending on the courses subject, one can either provide scalable software or a 
 With fitting material provided, it's easy to learn cloud-native development, DevOps or Cloud-Operations. 
 Even complicated topics, like microservices and IoT-applications can easily be adaptet inside Che \cite{IV18} and performed as for example as group-projects with a common goal. 
 The student will need to understand cloud-components aswell as team-work to succeed with Che. 
+
 The produced artifacts can simply be shipped as containers, giving comfortable access to the professor. 
 With both the product and the code inside the workspace easily accessible, the professor can grant faster and better feedback for the students, which can have massive impact on learning \cite{HU95}\cite{HU18}.
 Additionally, the professor can provide automated end-to-end tests with tools like Jenkins or TravisCI. 
 Given such an environment, the student will immideatly get objective feedback, whether their code fulfills the requirements. 
 This immediate feedback is a big motivator and has a positive impact on the learning experience \cite{FI05}. 
 With a clear reason on the usefulness of the task, the visible progress and the direct impact of personal effort should lead to intrinsic motivation, which studies show to have a strong effect on education \cite{DECI93}. 
+
 As a requirement, it's necessary to provide a meaningful and fun task. 
 Fortunately, such tasks are not that rare in development.  
 Other studies have shown that only automated and unified testing is not beneficial to education in general \cite{TC88}. 
@@ -310,9 +333,12 @@ With a single investment for the tests, feedback for every student is granted at
 With the single investment of providing a running Che instance (and a short lecture how to use it), feedback on the artifacts and code can be immidieatly granted to every student, without having the overhead of setting up workspaces. 
 These investments can be done before the course starts at any time and can be reused.
 It's not dependent on the individual students. 
+
 In general, this approach enables studies to be less about the subject, but instead to be about learning the subject. 
 I consider this the primary goal of university courses. 
 Another benefit for education is about fairness in IT-Education.  
+
+\subsection{Equality and Accessibility}
 With access to a university Che workspace, every person can develop the same software in the same environment. 
 A wellknown problem is the necessity of an IOS-build-device for IOS-appdevelopment.
 Students which are limited in their access to the university-laboratory or cannot afford a mac are therefore handicapped.
@@ -320,6 +346,7 @@ Another  rising  problem  are  GPU-accelerated  machine learning algorithms.
 Depending on the task, training neural networks can be 20 times faster if a CUDA-compatible graphics card is used. 
 The range for these graphiccards start at 300\$ and are therefore not commodity hardware,especially for students.  
 While these technologies are great and important for many applications, the required technologies are exclusive due to  their  costs.
+
 This  hindrance  for  education  is  usually adressed  with  IOS-laboratories  and/or  cloud-resources paid for by university. 
 The topic of socio-economic factors is beyond the scope of this work, but the impact has been analyzed by the PISA Studies \cite{PISA15}, which state that socio-economicly handicapped students fail three times more likely to achieve a basic level of performance.
 According to PISA, this rate has not significally changed since the studies started in 2006. 
@@ -328,8 +355,10 @@ The Mac-Laboratories and rented cloudspace are technically a good attempt at inc
 But students which are required to get to university to do their assignments are 
 less  likely  to  do  so.
 Making  assignments  mandatory, providing extrinsic motivation \cite{DECI93} has usually a negative impact on the subjective experience.
+
 A different problem comes with machine-learning, which is usually a process of trial and error to some extend.
 Long waiting times disconnect the action from the result being not beneficial for the learning process \cite{HU95}\cite{DECI93}. 
+
 One may argue that having this kind of anticipation is extra rewarding and therefore highly motivational.
 From my personal experience, working in this modus becomes exhausting after a period of weeks, especially when errors occur. 
 I expect this experience to be highly personal. 
@@ -337,9 +366,11 @@ I think providing the fastest infrastructure possible, enabling the fastest resu
 Making progress slower is much easier than making it faster.  
 In addition, the time spent waiting on your machine learning algorithm or moving to the mac-laboratory on weekends is simply dead time. 
 It should therefore be minimized.   
+
 With studies showing basics of good learning experiences \cite{FI05}\cite{TC88} and the impact of motivation \cite{HU95}\cite{DECI93}, it is mandatory for institutions to provide the best possible environment. 
 While many socio-economic factors cannot be grasped at the university or by the educators, those originating in the students' economic background can be addressed.
 Most universities already provide free services, such as software-suites, e-libraries or cloud storage.
+
 Simply providing a technical correct solution (like laboratories) is not enough to provide a good environment.
 One student with a better socio-economic background who can afford a 300\$ GPU will have a better baseline for his education. 
 This is simply put unfair.
@@ -349,15 +380,18 @@ With Che, universities can provide a free, good and accessible development envir
 Cloud technology will be dominant in the foreseeable future. 
 Not \textit{everything} will be best fit for cloud, but most of the everyday software benefits from the concepts. 
 With more and more tools making it easier, it's just a matter of time until cloud-tec becomes standard instead of bonus.
+
 With Eclipse Che many problems about teaching students these Cloud Skills and reducing the initial scope for learning, are addressed. 
-While the impacts on motivation and the actual learning results are only hypothetical, most of the technical aspects are solved by Che.  
+While the impacts on motivation and the actual learning results are only hypothetical, most of the technical requirements are solved by Che.  
 As Eclipse Che is cutting edge it whatsoever lacks many quality of life features, has some bugs, and the design is undefined to some extend. 
+
 It somewhat is a chance: 
 Instances like a university can have massive impact on the design of Che and drive the project to some extend for their own needs. 
 With faculties working on the open source project, either providing code and features, or just testing Che in educational environments, both quality issues and missing features can be solved.    
 Now cloud development is only for corporations. 
 There is hardly any chance to successfully learn it at university. 
 With Che there is another chance to “get back into the game” – and provide corporation-free education.  
+
 While this sounds harsh towards companies, I think unbiased education for students is not a nice thing to have, but a core concept of education in general. 
 Only if that is true, the students can make unbiased decisions and make unbiased research. 
 Being dependent on Google for Universities is in a similar way disturbing, as if a biology faculty would be sponsored by Bayer. 
