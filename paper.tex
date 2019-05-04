@@ -210,7 +210,98 @@ The code, and the workspace itself, can commonly be shared with any versioning t
 It's mostly dependent on the team which kind of cooperation they prefer. 
 As  an  interesting  fact,  Eclipse  Che  is  developed  with Eclipse Che, proving that complex cloud development is possible. 
 This so-called \textit{dogfooding} usually leads to a product which puts requirements over any a-priori design or foreign interests.  
-Existing components will be enhanced if working with them becomes troublesome, leaving a clean and valuable core product.   
+Existing components will be enhanced if working with them becomes troublesome, leaving a clean and valuable core product. 
+
+\section{General Benefits and Handicaps}
+The primary goals of Che are twofold: 
+First it reduces failure when migrating software into the cloud and enhances the experience of working in a rich remote environment.
+Second is to set up people into existing projects faster and failsafe.
+
+The university of Arizona showed [11], that about 50\% of software inspected was not able to build. 
+Common reasons are missing, changed or faulty dependencies, leading to the common term of \textit{dependency hell} aswell as unclear documentation. 
+Experienced programmers are usually able to overcome these issues, given enough time. This continues to be an issue [14], and without a different approach probably always will be. 
+This problem is solved, if the software is built inside a docker-container and follows the principles of self-containment and image-immutability [17].
+The self-containment principle dictates that  at build-time every required dependency is given, and a fully functional image is created.
+A dockerized maven-application would include java, maven and every required maven package to run the application in the current state. 
+The image-immutability means to forbid alternations to the environment. 
+No installations at runtime, no change in ports, no creation of database-schemas.
+These two principles, while being optional, lead to always reproducible and functional artifacts.
+The main challenge is to migrate existing software and fulfill these properties. 
+Typically, after making the first iterations of your software on your local machine, dockering it will yield to 100 problems at once, not only being frustrating but taking tons of time. 
+With Che, this kind of Big-Bang-Migration is not possible, as from the very first step you are working inside of a docker-container.
+The properties above can be hold with every change to the image and checked in a normal review-process. 
+Problems will arise one at a time and be solved one at a time, whether they are about code or operations. 
+Che therefore embraces the core-ideas of DevOps [19][20] and agile software development [18].
+That being said, of course it's possible to big-bang-migrate into Che, causing the normal problem mentioned above. 
+However, once the errors are resolved, every further development will work more agile by design.
+The artifacts (whether containers or pods) produced with Che are self-contained and immutable, therefore every result is reproducible. 
+Any further development is incremental on the existing images and keeps old artifacts stable. 
+As the code is fully build inside containers and are already run remotely, the famous “It works on my Machine!” is eliminated. 
+This does not only enhance deployments, but also has a big impact on quality assurance and the motivation of developers. 
+You can keep multiple projects in a single workspace and launch multiple pods at once, running the full environment. 
+The behavior of this multipod is unified and testable, making a stable release of full environments possible. 
+This is one of the primary goals of the DevOps approach [20]. 
+The workspace can therefore form totally new ways of programming, such as IoT Applications \footnote{he Plugin Arktik for Eclipse offered IoT Development with Che.While Arktik is unsupported since February 2019, it proved that the concept worked.} or a full setup of microservices [21], while being agile and reproducible.
+Onboarding new teammembers is made easy with Che. 
+A newly joining member does not need to install IDEs, languages, tools and packages, he only needs access to his Che-Account and a singular workspace with every dependency build for him.
+Depending on the complexitiy of the project this required atmost an hour. 
+While this may seem long, the setup time is dependent on the complexity of the workspace. 
+Setting up a complex workplace will also take more time manually. 
+The work for this is done automatic and remote, so the user is free to dive into the documentation or have some coffee. 
+His workspace will be able to launch the latest version immidieatly.
+It is also notable, that the (technical) onboarding of developers and operators is streamlined into one single process. 
+The combination of a quick setup and the usability of every enhancement makes Che especially interesting to recruit troubleshooters into your projects, which solve some of the very specialiced tasks.  
+With  the  artifacts  being  reproducible,  the  expert  can quickly inspect the subject and analyse problems.
+With a finished workspace he can quickly start working. 
+With his changes being also in docker, they will be visible and functional for the whole team.
+Therefore,  the  hardest  common  problems  regarding \textit{quick help} are addressed and solved. 
+As an additional minor benefit, it is easy to hibernate resources  using  Che  with  Kubernetes  or  Openshift.
+The workspaces collect metrics like any other container and are therefore scalable on demand. 
+The ability of downscaling the development resources has a big impact on the overall 
+workload. 
+As a further example, the workspaces could be shut down out of normal business-time. This attribute is crucial for a rented infrastructure, which is paid commonly on both workload and storage.  
+The very first handicap coming with Che is the requirement for a good internet connection. 
+While your normal buro is already equipped with internet, one may want to work on train or there is simply a problem with the WiFi in your hotel.
+With the possibility to setup che on localhost, you can learn the basics and routines offline. 
+As the main benefits come in terms of teamwork, this is not a real solution.
+The primary problem with Che is the requirement for an already dense knowledge of cloud related technology.
+Setting up the Workspace, docker-images, build and CI scripts is a complex topic and can not be done by someone getting started. 
+This requirement extends when working with a multipod-environment. 
+While most of the tasks are by themselves rather simple, the bare amount of such tasks (especially when migrating an existing project to Che) requires a broad knowledge.
+This can be done by a single expert user, enabling the other developers  to  use  the  build-routines and  environments provided. 
+However, many problems which arise are related to the cloud-environement and will be hard to solve by a novice user, making him dependent on the expert. 
+It's therefore necessary to get everyone on a certain base-level to solve their own problems, otherwise the expert will be overloaded and the project stuck.  
+Additionally, the missing default “build and run” is a paradigm-shift for many developers, which will take a while to get used to. 
+Clark et al. [14] describe this rather as a change in the mindset, than in actual technology: 
+
+TODO CITE CITE CITE
+The primary shift that’s required is not one of new tooling, as most developers already have the basic tooling they need. 
+Rather, the needed shift is one of philosophy. 
+TODO CITE CITE CITE END
+
+Intuitively this is true: Every developer needs to setup his own workspace – the skills to do this are already there. 
+The only difference is to setup the workspace in a common, documentated and descriptive way. 
+
+Another problem with Che is the uncommon debugging. 
+As the code is running in a remote-runtime, the common breakpoint  and  valuecheck
+is  missing.  
+Instead,  one  either must be familiar with the languages commandline-debugging or write good logs and metrics. 
+While this will slow down development, it also offers some benefits: 
+The debugging and error-analysis inside the container is the same as it would be in the productive environment. 
+Having meaningful logs with different loglevels and collecting valuable metrics is 
+in general a good attribute for software in any circumstance. 
+It just means additional effort and know-how.  
+The last problem is the vulnerability to malevolent users. 
+Someone who already is in possession of a valid account can drain the shared resources of a full cluster, therefore blocking  any  other  user  from  work.
+This  can  also  be achieved by human error. 
+Dependent on the setup, the attacker could also auto-deploy hidden spyware into a pro-
+duction environment. 
+While this is also a problem for normal developer teams, the fast pace of deployments with Che requires additional care. 
+A rich CI/CD environment, such as a well-maintained Jenkins may lead to less-detailed code-reviews, as both unit- and end-to-end-tests succeed.  
+It is therefore important to not only restrict access to project resources, but also the double-check and guard the releases.  
+Some security risks can also emerge from docker-images as well [9] but are out of scope for this paper.
+
+
 \section{Demonstrationen}
 \label{sec:demos}
 Das Symbol für Potenzmengen ($\powerset$) wird korrekt angezeigt.
