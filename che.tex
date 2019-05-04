@@ -1,41 +1,8 @@
 % !TeX encoding = UTF-8
-% !TeX spellcheck = de_DE
+% !TeX spellcheck = en_EN
 
-%% Dies gibt Warnungen aus, sollten veraltete LaTeX-Befehle verwendet werden
-\RequirePackage[l2tabu, orthodox]{nag}
 
-\documentclass[utf8,biblatex]{lni}
-\bibliography{che}
-
-%% Schöne Tabellen mittels \toprule, \midrule, \bottomrule
-\usepackage{booktabs}
-
-%% Zu Demonstrationszwecken
-\usepackage[math]{blindtext}
-\usepackage{mwe}
-
-%% BibLaTeX-Sonderkonfiguration,
-%% falls man schnell eine existierende Bibliographie wiederverwenden will, aber nicht die .bib-Datei händisch anpassen möchte.
-%% Bitte \iffalse und \fi entfernen, dann ist diese Konfiguration aktiviert.
-
-\iffalse
-\AtEveryBibitem{%
-  \ifentrytype{article}{%
-  }{%
-    \clearfield{doi}%
-    \clearfield{issn}%
-    \clearfield{url}%
-    \clearfield{urldate}%
-  }%
-  \ifentrytype{inproceedings}{%
-  }{%
-    \clearfield{doi}%
-    \clearfield{issn}%
-    \clearfield{url}%
-    \clearfield{urldate}%
-  }%
-}
-\fi
+\documentclass[utf8]{lni}
 
 \begin{document}
 %%% Mehrere Autoren werden durch \and voneinander getrennt.
@@ -65,7 +32,7 @@ programming classes with this technology.
 \end{abstract}
 
 \begin{keywords}
-Eclipse Che, Cloud-Ready, Cloud-Native, DevOps, Docker, Kubernetes, OpenShift
+Eclipse Che \and Cloud-Ready \and Cloud-Native \and DevOps \and Docker \and Kubernetes \and OpenShift
 \end{keywords}
 
 \section{Introduction}
@@ -405,6 +372,6 @@ may yield very different results.
 
 %% \bibliography{lni-paper-example-de.tex} ist hier nicht erlaubt: biblatex erwartet dies bei der Preambel
 %% Starten Sie "biber paper", um eine Biliographie zu erzeugen.
-\printbibliography
-
+%\printbibliography
+\bibliography{che}
 \end{document}
