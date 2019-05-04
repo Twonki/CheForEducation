@@ -53,27 +53,72 @@
 \maketitle
 
 \begin{abstract}
-Die \LaTeX-Klasse \texttt{lni} setzt die Layout-Vorgaben für Beiträge in LNI Konferenzbänden um.
-Dieses Dokument beschreibt ihre Verwendung und ist ein Beispiel für die entsprechende Darstellung.
-Der Abstract ist ein kurzer Überblick über die Arbeit der zwischen 70 und 150 Wörtern lang sein und das Wichtigste enthalten sollte.
-Die Formatierung erfolgt automatisch innerhalb des abstract-Bereichs.
+Eclipse Che is a revolutionary cloud-based IDE, inheriting the approach of building cloud-ready software within a 
+remote environment. 
+Instead of developing on your local machine, a remote development-server is accessed via a webbrowser 
+and the artifacts are compiled into docker-containers. 
+
+This paper shortly summarizes the required environment, introduces the concept and workflow of Eclipse Che and evaluates 
+the benefits and downsides of this approach. 
+Focus is set on a new point of view, enhancing computer studies and 
+programming classes with this technology. 
 \end{abstract}
 
 \begin{keywords}
-LNI Guidelines \and \LaTeX Vorlage
+Eclipse Che, Cloud-Ready, Cloud-Native, DevOps, Docker, Kubernetes, OpenShift
 \end{keywords}
 
-\section{Verwendung}
-Die GI gibt unter \url{http://www.gi-ev.de/LNI} Vorgaben für die Formatierung von Dokumenten in der LNI Reihe.
-Für \LaTeX-Dokumente werden diese durch die Dokumentenklasse \texttt{lni} realisiert.
+\section{Introduction}
+As children we, used to look into the clouds and count sheep. 
+As developers, we look into the clouds and check our applications.  
+Cloud technologies are already state of the art, enabling global players like Google to run applications on a world-scale.
+The market-leaders got their portfolio stocked up with  a  variety  of  different  cloud  technologies,  ranging 
+from cloud computing, cloud storage, database-as-a-service or rentable authentication. 
+Modern Software needs to be scalable, self-contained, and should run on any device, aswell as in the cloud.  
+This trend is also visible in Googles searches (TODO: Abbildung 1). 
 
-Dieses Dokument basiert auf der offiziellen Dokumentation, simplifiziert und setzt grundlegendes LaTeX-Wissen voraus.
-Es werden generische Platzhalter an die entsprechenden Stellen (wie beispielsweise die Authoren-Angaben) gesetzt und nicht weiter an anderer Stelle dokumentiert.
+Figure 1(TODO LINK) shows the steadily rising interest in the most popular cloud technologies. 
+Docker is a container-engine enabling OS-Virtualization, Kubernetes is a Container-Platform manager and Openshift is a software-suite based on Kubernetes. 
+These technologies will be summarized in 2.1.  
+As cloud-technology such technologies are referred which achieve five attributes: 
+On-demand self-service, broad network-access, resource pooling, rapid elasticity and measured service [15]. 
+Cloud technology usually splits into two components:  Infrastructure  and  Services,  where  docker and Kubernetes are considered infrastructure and provide a  platform  to  host  services.  
+Most  of  the  attributes  are (pseudo-) achievable by the infrastructure alone – such as restarting containers. 
+Software running as a service can be put into two categories: 
+“Cloud-Ready” – meaning that it can be run in common cloud environments, such as Kubernetes. 
+The term cloudready  does  usually  not  include  live-scalability. Cloud-readieness is mostly achieved by removing dependencies and either running on bare-linux or being ported into a dockercontainer. 
+Lately the term “Cloud-native” came up [17], referring to software which is built from the very first steps to run inside the cloud. This kind of software is usually running inside a docker-container and both resilient and elasticby design [8].  
+Resilience refers to the ability of handling failure, both from external sources and restarting/configuring themselves.  
+Elasticy is the ability to request more resources on demand, performing more computations when required, but also to free the resources if not needed. 
+Cloud-ready Software usually achieves only a certain degree of resilience.   
+Cloud-Native applications are aware of their context and collect meaningful metrics for the platform that they cannot reach other services or need more capacities [16]. 
+The applications must also be able to use the gained resources in a productive and healthy way.  
+Modern  cloud-platforms  can  perform  pseudo-scalabilty for cloud-ready-services by starting multiple instances of the same service. 
+The cloud-platform performs load-balancing between these instances. 
+This naive approach can work out fine, but for example starting two services working on the same database will not yield any real scalability. 
+Another common problem arises when two services are started on the same machine and need the same port, just to name two problems with cloud-ready  software in a cloud environment. 
 
-Dieses Template ist wie folgt gegliedert:
-\Cref{sec:demos} zeigt Demonstrationen der LNI-Verlage.
-\Cref{sec:lniconformance} zeigt die Einhaltung der Richtlinien durch einfachen Text.
-
+As Cloud is a central element of modern IT-development, it is strange to see that it is not yet widely teached across 
+universities in Germany \footnote{https://www.hochschulkompass.de/studium/studiengangsuche lists currently only 10 german universities with courses on cloud computing, about 30 courses on virtualization }.
+There are courses to teach either classic virtualization or docker-basics, but the knowledge of full-stack cloudplatforms and cloud-native development is sealed behind corporate doors and conference workshops.
+Meanwhile,  the  annual  Stackoverflow  developersurvey [22] showed, that DevOps-engineers are not only 
+amongst the most wanted and most paid jobs but also tend to be the happiest participants.  
+Every student either wants to be happy or to be rich, making Cloud an interesting topic for their career. 
+So why there are no courses? There are many reasons, but the most prominent is the complexity of the topic: 
+To build a real cloud native application, the developer must understand virtualization, system-administration, development, 
+infrastructure  and  networking. 
+Additionally, the developer needs to use specific tools, know best practices, tests and work in a team.
+All these factors make a high stake for entrance, also  represented in the developersurvey [22] which states that most DevOps engineers have a decade of experience, usually in operations topics.
+Lucky for us, a new open-source software, Eclipse Che, is on the rise to enable everyone for cloud-native development.
+Che is unlike a normal eclipse distribution: 
+It is hosted on a server and developers get access with their browser. 
+Instead of installing dependencies, compilers etc. locally, a common workspace is set up, which is shared amongst the programmers. 
+The software build is run inside a docker-container, making it cloud-native by default. 
+With Version 7 upcoming and prominent support from RedHat, Eclipse Che is not a prototype anymore. 
+The latest distributions of RedHats OpenShift are shipped with Che in default. 
+Therefore, it is worth looking at this possible game-changer. 
+With the first part of this paper, the structure and ideas of Che are explained in more detail, the second part of this pa-
+per covers general arguments about this approach and gives a detailed overview of reachable benefits for education.    
 \section{Demonstrationen}
 \label{sec:demos}
 Das Symbol für Potenzmengen ($\powerset$) wird korrekt angezeigt.
