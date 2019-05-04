@@ -301,6 +301,65 @@ A rich CI/CD environment, such as a well-maintained Jenkins may lead to less-det
 It is therefore important to not only restrict access to project resources, but also the double-check and guard the releases.  
 Some security risks can also emerge from docker-images as well [9] but are out of scope for this paper.
 
+\section{Benefits for Education}
+In addition to the previous mentioned benefits, there are more points about Che that are especially important for educational purposes, such as courses in the university, professional school or research departments.
+For simplicity I will only elaborate universities, to which I can best relate.
+Eclipse Che provides the possibility to learn primary cloud-technologies hands on and in a simple and supportive manner. 
+Unfortunetally, these topics are currently not widely teached at university.
+Che makes it possible to teach students fundamentals of modern software development.
+Depending on the courses subject, one can either provide scalable software or a running environment. 
+With fitting material provided, it's easy to learn cloud-native development, DevOps or Cloud-Operations. 
+Even complicated topics, like microservices and IoT-applications can easily be adaptet inside Che [21] and performed as for example as group-projects with a common goal. 
+The student will need to understand cloud-components aswell as team-work to succeed with Che. 
+The produced artifacts can simply be shipped as containers, giving comfortable access to the professor. 
+With both the product and the code inside the workspace easily accessible, the professor can grant faster and better feedback for the students, which can have massive impact on learning [1][5].
+Additionally, the professor can provide automated end-to-end tests with tools like Jenkins or TravisCI. 
+Given such an environment, the student will immideatly get objective feedback, whether their code fulfills the requirements. 
+This immediate feedback is a big motivator and has a positive impact on the learning experience [2]. 
+With a clear reason on the usefulness of the task, the visible progress and the direct impact of personal effort should lead to intrinsic motivation, which studies show to have a strong effect on education [23]. 
+As a requirement, it's necessary to provide a meaningful and fun task. 
+Fortunately, such tasks are not that rare in development.  
+Other studies have shown that only automated and unified testing is not beneficial to education in general [3]. 
+But the tools provided by Che and CI/CD slim down the overhead until both personal feedback and automated can be supplied. 
+If the whole classroom utilizes this system, the educator can also monitor who is having trouble in an automated manner. 
+With a single investment for the tests, feedback for every student is granted at every time. 
+With the single investment of providing a running Che instance (and a short lecture how to use it), feedback on the artifacts and code can be immidieatly granted to every student, without having the overhead of setting up workspaces. 
+These investments can be done before the course starts at any time and can be reused.
+It's not dependent on the individual students. 
+In general, this approach enables studies to be less about the subject, but instead to be about learning the subject. 
+I consider this the primary goal of university courses. 
+Another benefit for education is about fairness in IT-Education.  
+With access to a university Che workspace, every person can develop the same software in the same environment. 
+A wellknown problem is the necessity of an IOS-build-device for IOS-appdevelopment.
+Students which are limited in their access to the university-laboratory or cannot afford a mac are therefore handicapped.
+Another  rising  problem  are  GPU-accelerated  machine learning algorithms. 
+Depending on the task, training neural networks can be 20 times faster if a CUDA-compatible graphics card is used. 
+The range for these graphiccards start at 300\$ and are therefore not commodity hardware,especially for students.  
+While these technologies are great and important for many applications, the required technologies are exclusive due to  their  costs.
+This  hindrance  for  education  is  usually adressed  with  IOS-laboratories  and/or  cloud-resources paid for by university. 
+The topic of socio-economic factors is beyond the scope of this work, but the impact has been analyzed by the PISA Studies [7], which state that socio-economicly handicapped students fail three times more likely to achieve a basic level of performance.
+According to PISA, this rate has not significally changed since the studies started in 2006. 
+Germany scored on the impact of socioeconomic-factors on education better than it did in 2006 but is worse than global average [6].
+The Mac-Laboratories and rented cloudspace are technically a good attempt at inclusion. 
+But students which are required to get to university to do their assignments are 
+less  likely  to  do  so.
+Making  assignments  mandatory, providing extrinsic motivation [23] has usually a negative impact on the subjective experience.
+A different problem comes with machine-learning, which is usually a process of trial and error to some extend.
+Long waiting times disconnect the action from the result being not beneficial for the learning process [1][23]. 
+One may argue that having this kind of anticipation is extra rewarding and therefore highly motivational.
+From my personal experience, working in this modus becomes exhausting after a period of weeks, especially when errors occur. 
+I expect this experience to be highly personal. 
+I think providing the fastest infrastructure possible, enabling the fastest results, is the better way. 
+Making progress slower is much easier than making it faster.  
+In addition, the time spent waiting on your machine learning algorithm or moving to the mac-laboratory on weekends is simply dead time. 
+It should therefore be minimized.   
+With studies showing basics of good learning experiences [2][3] and the impact of motivation [1][23], it is mandatory for institutions to provide the best possible environment. 
+While many socio-economic factors cannot be grasped at the university or by the educators, those originating in the students' economic background can be addressed.
+Most universities already provide free services, such as software-suites, e-libraries or cloud storage.
+Simply providing a technical correct solution (like laboratories) is not enough to provide a good environment.
+One student with a better socio-economic background who can afford a 300\$ GPU will have a better baseline for his education. 
+This is simply put unfair.
+With Che, universities can provide a free, good and accessible development environment for every student.
 
 \section{Demonstrationen}
 \label{sec:demos}
