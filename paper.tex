@@ -69,19 +69,25 @@ Eclipse Che, Cloud-Ready, Cloud-Native, DevOps, Docker, Kubernetes, OpenShift
 \end{keywords}
 
 \section{Introduction}
+\label{sec:Introduction}
 As children we, used to look into the clouds and count sheep. 
 As developers, we look into the clouds and check our applications.  
 Cloud technologies are already state of the art, enabling global players like Google to run applications on a world-scale.
 The market-leaders got their portfolio stocked up with  a  variety  of  different  cloud  technologies,  ranging 
 from cloud computing, cloud storage, database-as-a-service or rentable authentication. 
 Modern Software needs to be scalable, self-contained, and should run on any device, aswell as in the cloud.  
-This trend is also visible in Googles searches (TODO: Abbildung 1). 
+This trend is also visible in Googles searches \ref{fig:digdocker}. 
 
-Figure 1 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{imgs/DigDocker}
+	\caption{Rising interest in Cloud Tec, Data provided by Google Trends}
+	\label{fig:digdocker}	
+\end{figure}
 
-Figure 1(TODO LINK) shows the steadily rising interest in the most popular cloud technologies. 
+Figure \ref{fig:digdocker} shows the steadily rising interest in the most popular cloud technologies. 
 Docker is a container-engine enabling OS-Virtualization, Kubernetes is a Container-Platform manager and Openshift is a software-suite based on Kubernetes. 
-These technologies will be summarized in 2.1.  
+These technologies will be summarized in \ref{subsec:Req}.  
 As cloud-technology such technologies are referred which achieve five attributes: 
 On-demand self-service, broad network-access, resource pooling, rapid elasticity and measured service [15]. 
 Cloud technology usually splits into two components:  Infrastructure  and  Services,  where  docker and Kubernetes are considered infrastructure and provide a  platform  to  host  services.  
@@ -106,7 +112,7 @@ There are courses to teach either classic virtualization or docker-basics, but t
 Meanwhile,  the  annual  Stackoverflow  developersurvey [22] showed, that DevOps-engineers are not only 
 amongst the most wanted and most paid jobs but also tend to be the happiest participants.  
 Every student either wants to be happy or to be rich, making Cloud an interesting topic for their career. 
-So why there are no courses? There are many reasons, but the most prominent is the complexity of the topic: 
+So why are there no courses? There are many reasons, but the most prominent is the complexity of the topic: 
 To build a real cloud native application, the developer must understand virtualization, system-administration, development, 
 infrastructure  and  networking. 
 Additionally, the developer needs to use specific tools, know best practices, tests and work in a team.
@@ -123,25 +129,27 @@ With the first part of this paper, the structure and ideas of Che are explained 
 per covers general arguments about this approach and gives a detailed overview of reachable benefits for education.    
 
 \section{Eclipse Che}
+\label{sec:Che}
 \subsection{Environment and Requirements}
+\label{subsec:Req}
 Che is hosted as a server-application and is already cloudnative. 
 The only requirements are that either Docker, Kubernetes or OpenShift are available for the installation.
 The differences between these will shortly be summarized.
  
-Docker \footnote{https://www.docker.com/} is a container-plattform, where a container is a standardized unit of of software including the code, dependencies and core-functionalities. 
+Docker\footnote{https://www.docker.com/} is a container-plattform, where a container is a standardized unit of of software including the code, dependencies and core-functionalities. 
 A container runs on an OS-Virtualization, originating from LXC, has declared interfaces and can be parameterized. 
 One of the core features is to connect containers for bigger projects, e.g. one 
 database container and one web-server container, which are connected into a virtual network. 
 Docker is mostly famous for this docker-engine, but enriches it with monitoring and logging, as well as the ability to move containers onto different machines.   
 
-Kubernetes \footnote{https://kubernetes.io/} is a container-orchestration-system based on Docker. 
+Kubernetes\footnote{https://kubernetes.io/} is a container-orchestration-system based on Docker. 
 Kubernetes picked up the growing problem in managing multiple docker-containers by  simplyfing  resource-management. 
 Additional to deployment and monitoring of container-groups it provides auto-restart mechanisms and scaling based on (custom) metrics. 
 When run on Kubernetes, Che is hosted as a single docker container in the existing platform.
 The term pod, also later used in this paper, refers to a suite of connected containers. 
 An example pod would be a simple two-tier web-application, where the database and webserver are two different, but connected containers.
 
-Openshift \footnote{https://www.openshift.com/} provides a software-suite around Kubernetes with the goal to automate cloud-native development and delivery.
+Openshift\footnote{https://www.openshift.com/} provides a software-suite around Kubernetes with the goal to automate cloud-native development and delivery.
 Notable  additions  include  Jenkins,  Gitea,  Sonarqube and lately Che. 
 Regarding Che there are no notable changes in handling, as Che is simply run on the build in Kubernetes.
 When run on Kubernetes or Docker Che will require two additional containers for authentification with KeyCloack. 
@@ -150,15 +158,22 @@ Eclipse Che  can be run  on any  base-technology  on  localhost – this is rath
 When run (locally) on docker, the plugin CheDir enables a portable workspace, 
 which can be used on any docker based Che.
 \subsection{Technology and Workflow}
+\label{subsec:Tec}
 A normal IDE is software on your computer which makes programming easier than doing it in a plain text-editor and commandline. 
 Common tasks for an IDE are dependency management, debugging, refactoring and autocompletion.
 It is important that an IDE is not required to develop – you can write .java-files in Vim, compile on the console and run a .Jar manually. 
 With that in mind, we can see that the IDE is just a tool to make things (a lot) more comfortable – but you also have requirements such as the JDK, the .Jars you need in your classpath etc. as they are only utilized by your IDE.
 You can consider this stack as your workspace as it contains everything required to work, with the IDE making the workspace comfortable to use.
 Eclipse Che does not work like a normal IDE. 
-Che consists of three main components shown in Figure 2 (TODO Figure 2).
+Che consists of three main components shown in Figure \ref{fig:cheworkflow}\footnote{source:\url{https://en.wikipedia.org/wiki/Eclipse_Che#/media/File:Eclipse_Che_-_Workflow.PNG}}.
 
-FIGURE 2 CHES OVERVIEW
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/Che_Workflow}
+	\caption[Che Workflow]{Che Workflow}
+	\label{fig:cheworkflow}
+\end{figure}
+
 
 \begin{enumerate}
 	\item Workspaces, including Runtimes and IDEs
@@ -213,6 +228,7 @@ This so-called \textit{dogfooding} usually leads to a product which puts require
 Existing components will be enhanced if working with them becomes troublesome, leaving a clean and valuable core product. 
 
 \section{General Benefits and Handicaps}
+\label{sec:Eval}
 The primary goals of Che are twofold: 
 First it reduces failure when migrating software into the cloud and enhances the experience of working in a rich remote environment.
 Second is to set up people into existing projects faster and failsafe.
@@ -302,6 +318,7 @@ It is therefore important to not only restrict access to project resources, but 
 Some security risks can also emerge from docker-images as well [9] but are out of scope for this paper.
 
 \section{Benefits for Education}
+\label{sec:EvalEdu}
 In addition to the previous mentioned benefits, there are more points about Che that are especially important for educational purposes, such as courses in the university, professional school or research departments.
 For simplicity I will only elaborate universities, to which I can best relate.
 Eclipse Che provides the possibility to learn primary cloud-technologies hands on and in a simple and supportive manner. 
@@ -361,6 +378,7 @@ One student with a better socio-economic background who can afford a 300\$ GPU w
 This is simply put unfair.
 With Che, universities can provide a free, good and accessible development environment for every student.
 \section{Conclusion}
+\label{sec:Conclusion}
 Cloud technology will be dominant in the foreseeable future. 
 Not \textit{everything} will be best fit for cloud, but most of the everyday software benefits from the concepts. 
 With more and more tools making it easier, it's just a matter of time until cloud-tec becomes standard instead of bonus.
@@ -378,6 +396,7 @@ Only if that is true, the students can make unbiased decisions and make unbiased
 Being dependent on Google for Universities is in a similar way disturbing, as if a biology faculty would be sponsored by Bayer. 
 One can only imagine a grim future if the curriculum is influenced by profit. 
 \section*{Future Work}
+\label{sec:FutureWork}
 As this paper only summarizes benefits and outlines some ideas, the next step would be to put it to the test.
 In addition, a study could be elaborated on both the acceptance and effect of a CI/CD based development course with Che. 
 Unfortunately, the study would lack any comparison as there are few courses on this topic. 
