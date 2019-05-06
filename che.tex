@@ -236,8 +236,21 @@ You can keep multiple projects in a single workspace and launch multiple pods at
 The behavior of this multipod is unified and testable, making a stable release of full environments possible. 
 
 This is one of the primary goals of the DevOps approach \cite{JA16}. 
-The workspace can therefore form totally new ways of programming, such as IoT Applications \footnote{he Plugin Arktik for Eclipse offered IoT Development with Che.While Arktik is unsupported since February 2019, it proved that the concept worked.} or a full setup of microservices \cite{IV18}, while being agile and reproducible.
+The workspace can therefore form totally new ways of programming, such as IoT Applications \footnote{he Plugin Arktik for Eclipse offered IoT Development with Che.While Arktik is unsupported since February 2019, it proved that the concept worked.} or a full setup of micro-services \cite{IV18}, while being agile and reproducible.
+\subsection{Sharing Results}
+The topic \textit{docker for reproducible research} has already been promoted \cite{BO15} and successfully applied to complex topics \cite{ST16} such as machine learning. 
+As Clark et al. \cite{CL14} have used code of the several repositories provided from their university, and I expect most of these projects to be of scientific nature, 50\% of the research results where not reproducible. 
 
+The idea to not only ship code, but ship the experiment as a whole makes reproduction much easier. 
+With Che (and using best practices for containers) the experiments done will be containerized and therefore reproducible. 
+Even more complex environments including multiple components can be made in the same paradigms forming a pod. 
+Such a pod could test applications working on an cassandra-cluster, fullstack web-applications or network-traffic-simulations.  
+
+Che also offers a whole new way of sharing the results: 
+If a peer wants to inspect the code, he can be granted an account and get hands on the experiment without any setup. 
+In an further attempt, a common guest-account can be established for anyone interested with read-only rights. 
+This does not only help cooperation and understanding, but is also a good way to verify the results. 
+At the moment we rather blindly trust each other about the results and data presented - we accepted that we are not able to reproduce it anyway or atleast not without inhuman effort. This changes with reproducible experiments, which verify the data and can help peers reviewing something even more important - the experiment itself. 
 \subsection{Faster Setup}
 Onboarding new teammembers is made easy with Che. 
 A newly joining member does not need to install IDEs, languages, tools and packages, he only needs access to his Che-Account and a singular workspace with every dependency build for him.
@@ -293,6 +306,7 @@ Having meaningful logs with different loglevels and collecting valuable metrics 
 in general a good attribute for software in any circumstance. 
 It just means additional effort and know-how.  
 
+\subsection{Vulnerability}
 The last problem is the vulnerability to malevolent users. 
 Someone who already is in possession of a valid account can drain the shared resources of a full cluster, therefore blocking  any  other  user  from  work.
 This  can  also  be achieved by human error. 
