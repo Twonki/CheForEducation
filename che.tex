@@ -42,7 +42,7 @@ As developers, we look into the clouds and check our applications.
 Cloud technologies are already state of the art, enabling global players like Google to run applications on a world-scale.
 The market-leaders got their portfolio stocked up with  a  variety  of  different  cloud  technologies,  ranging 
 from cloud computing, cloud storage, database-as-a-service or rentable authentication. 
-Modern Software needs to be scalable, self-contained, and should run on any device, aswell as in the cloud.  
+Modern Software needs to be scalable, self-contained, and should run on any device, as well as in the cloud.  
 This trend is also visible in Googles searches \ref{fig:digdocker}. 
 
 \begin{figure}[h]
@@ -88,7 +88,7 @@ Additionally, the developer needs to use specific tools, know best practices, te
 All these factors make a high stake for entrance, also  represented in the developersurvey \cite{SO19} which states that most DevOps engineers have a decade of experience, usually in operations topics.
 
 Lucky for us, a new open-source software, Eclipse Che, is on the rise to enable everyone for cloud-native development.
-Che is unlike a normal eclipse distribution: 
+Che is unlike a normal Eclipse-distribution: 
 It is hosted on a server and developers get access with their browser. 
 Instead of installing dependencies, compilers etc. locally, a common workspace is set up, which is shared amongst the programmers. 
 The software build is run inside a docker-container, making it cloud-native by default. 
@@ -124,7 +124,7 @@ Regarding Che there are no notable changes in handling, as Che is simply run on 
 When run on Kubernetes or Docker Che will require two additional containers for authentification with KeyCloack. 
 For Openshift the standard-openshift authentification is used.  
 
-Eclipse Che  can be run  on any  base-technology  on  localhost – this is rather for demonstrations aswell as for developers working on the Che-Code. 
+Eclipse Che  can be run  on any  base-technology  on  localhost – this is rather for demonstrations as well as for developers working on the Che-Code. 
 When run (locally) on docker, the plugin CheDir enables a portable workspace, 
 which can be used on any docker based Che.
 \subsection{Technology and Workflow}
@@ -208,8 +208,8 @@ First it reduces failure when migrating software into the cloud and enhances the
 Second is to set up people into existing projects faster and failsafe.
 
 \subsection{Reproduction and Maintenance}
-The university of Arizona showed \cite{CO16}, that about 50\% of software inspected was not able to build. 
-Common reasons are missing, changed or faulty dependencies, leading to the common term of \textit{dependency hell} aswell as unclear documentation. 
+The University of Arizona showed \cite{CO16}, that about 50\% of software inspected was not able to build. 
+Common reasons are missing, changed or faulty dependencies, leading to the common term of \textit{dependency hell} as well as unclear documentation. 
 Experienced programmers are usually able to overcome these issues, given enough time. This continues to be an issue \cite{CL14}, and without a different approach probably always will be. 
 
 This problem is solved, if the software is built inside a docker-container and follows the principles of self-containment and image-immutability \cite{BI17}.
@@ -273,8 +273,8 @@ workload.
 As a further example, the workspaces could be shut down out of normal business-time. This attribute is crucial for a rented infrastructure, which is paid commonly on both workload and storage. 
 \subsection{Always On}
 The very first handicap coming with Che is the requirement for a good internet connection. 
-While your normal buro is already equipped with internet, one may want to work on train or there is simply a problem with the WiFi in your hotel.
-With the possibility to setup che on localhost, you can learn the basics and routines offline. As the main benefits come in terms of teamwork, this is not a real solution.
+While a common office is already equipped with internet, one may want to work on a train or there is simply a problem with the WiFi in the hotel.
+With the possibility to setup Che on localhost, you can learn the basics and routines offline. As the main benefits come in terms of teamwork, this is not a real solution.
 \subsection{Knowledge Required}
 The primary problem with Che is the requirement for an already dense knowledge of cloud related technology.
 Setting up the Workspace, docker-images, build and CI scripts is a complex topic and can not be done by someone getting started. 
@@ -329,7 +329,7 @@ Che makes it possible to teach students fundamentals of modern software developm
 Depending on the courses subject, one can either provide scalable software or a running environment. 
 With fitting material provided, it's easy to learn cloud-native development, DevOps or Cloud-Operations. 
 Even complicated topics, like microservices and IoT-applications can easily be adaptet inside Che \cite{IV18} and performed as for example as group-projects with a common goal. 
-The student will need to understand cloud-components aswell as team-work to succeed with Che. 
+The student will need to understand cloud-components as well as team-work to succeed with Che. 
 
 The produced artifacts can simply be shipped as containers, giving comfortable access to the professor. 
 With both the product and the code inside the workspace easily accessible, the professor can grant faster and better feedback for the students, which can have massive impact on learning \cite{HU95}\cite{HU18}.
@@ -374,10 +374,10 @@ A different problem comes with machine-learning, which is usually a process of t
 Long waiting times disconnect the action from the result being not beneficial for the learning process \cite{HU95}\cite{DECI93}. 
 
 One may argue that having this kind of anticipation is extra rewarding and therefore highly motivational.
-From my personal experience, working in this modus becomes exhausting after a period of weeks, especially when errors occur. 
-I expect this experience to be highly personal. 
-I think providing the fastest infrastructure possible, enabling the fastest results, is the better way. 
-Making progress slower is much easier than making it faster.  
+From experience, working in this mode becomes exhausting after a period of weeks, especially when errors occur.
+While this experience is highly personal,providing the 
+fastest infrastructure possible, enabling the fastest results,is the better way.
+Making  progress  slower  is much easier than making it faster. 
 In addition, the time spent waiting on your machine learning algorithm or moving to the mac-laboratory on weekends is simply dead time. 
 It should therefore be minimized.   
 
