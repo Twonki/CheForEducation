@@ -22,7 +22,7 @@
 \begin{abstract}
 Eclipse Che is a revolutionary cloud-based IDE, inheriting the approach of building cloud-ready software within a 
 remote environment. 
-Instead of developing on your local machine, a remote development-server is accessed via a webbrowser 
+Instead of developing on a local machine, a remote development-server is accessed via a webbrowser 
 and the artifacts are compiled into docker-containers. 
 
 This paper shortly summarizes the required environment, introduces the concept and workflow of Eclipse Che and evaluates 
@@ -128,11 +128,11 @@ When run (locally) on docker, the plugin CheDir enables a portable workspace,
 which can be used on any docker based Che.
 \subsection{Technology and Workflow}
 \label{subsec:Tec}
-A normal IDE is software on your computer which makes programming easier than doing it in a plain text-editor and commandline. 
+A normal IDE is software on a computer which makes programming easier than doing it in a plain text-editor and commandline. 
 Common tasks for an IDE are dependency management, debugging, refactoring and autocompletion.
-It is important that an IDE is not required to develop – you can write .java-files in Vim, compile on the console and run a .Jar manually. 
-With that in mind, we can see that the IDE is just a tool to make things (a lot) more comfortable – but you also have requirements such as the JDK, the .Jars you need in your classpath etc. as they are only utilized by your IDE.
-You can consider this stack as your workspace as it contains everything required to work, with the IDE making the workspace comfortable to use.
+It is important that an IDE is not \textit{required} to develop - Vim can write Java files, the JDK can compile and the JRE can run everything manually from console. 
+With that in mind,an IDE is just a toolstack to make things (a lot) more comfortable – but it also has requirements such as the JDK, the .Jars needed in the classpath etc. as they are only utilized by the IDE.
+This stack can be considered a \textit{workspace} as it contains everything required to work, with the IDE making the workspace comfortable to use.
 Eclipse Che does not work like a normal IDE. 
 Che consists of three main components shown in Figure \ref{fig:cheworkflow}\footnote{source: \url{https://en.wikipedia.org/wiki/Eclipse_Che\#/media/File:Eclipse_Che_-_Workflow.PNG}}.
 
@@ -149,26 +149,26 @@ Che consists of three main components shown in Figure \ref{fig:cheworkflow}\foot
 	\item A browser-based IDE
 	\item An administrative server
 \end{enumerate}
-A workspace is like your above mentioned common \textit{workspace}. 
+A workspace is like the above mentioned common \textit{workspace}. 
 It is a single machine, as a container, containing the project files, compilers, package managers and an IDE-Interface. 
 There are two big differences to a normal development-setup:
 \begin{itemize}
 	\item The required items for the workspace are explicitly  declared, making  the  workspace itself a docker image
 	\item The IDE is not graphical – it is a REST-API performing actions like a normal IDE, such as build, writing to files and installing packages.  
 \end{itemize}
-An additional distinction is about building your software.
-Instead of building the .Jar in your remote-workspace, it is build inside a container in the remote-workspace.
+An additional distinction is about building software.
+Instead of building the .Jar in the remote-workspace, it is build inside a container in the remote-workspace.
 While this sounds a bit confusing, it makes sense to separate the actual runtime from the workspace. 
-This is also what happens on your machine – you compile an executable and run it separately. 
+This is also what happens on a local machine – the executable is compiled and run separately. 
 Having these runtimes inside a docker-container comes with great benefits, outlined later in this paper.
 
 The second component is the web-based IDE, which is basically a webpage performing the required REST-calls and utility-tasks for the developer. 
-It is sent by the administrative server when an authorized user accesses his workspace via browser. 
+It is sent by the administrative server when an authorized user accesses the workspace via browser. 
 These two components can be enriched with plugins.  
 Common plugins are language-extensions which support syntax-highlighting etc. or package managers with their regarding lifecycles.
 The difference to a normal IDE plugin is that it has two components: 
 One in the workspace-API and one in the hosted web-IDE.  
-Che offers a suite of common plugins dependent on your project. 
+Che offers a suite of common plugins dependent on the project. 
 When starting a Maven-project, the workspace is initialized with Maven and Java.
 
 The last component is the Che-administration server. 
@@ -176,9 +176,9 @@ In the administration-server the workspaces are orchestrated and monitored.
 The authorization is also done at the admin-server and not by every workspace.
 The workspaces can be split amongst multiple machines.
 The runtimes do not necessarily need to be on the same machines as their workspaces. 
-Instead of the web-based IDE, you can connect a desktop IDE to your workspace. 
-This is done by mounting the workspaces-filesystem  in  your  desktop  IDE. 
-This  will grant you access to autocompletion and other features, but you will miss Che specific helpers the web-IDE offers. 
+Instead of the web-based IDE, a desktop IDE can be connected to the workspace. 
+This is done by mounting the workspaces-filesystem in the desktop  IDE. 
+This  will grant access to autocompletion and other features, but will miss Che specific helpers the web-IDE offers. 
 Mounting remote file systems for development sounds lie an infinite source of problems.
 This feature looks to be rather a proof of concept.
 
@@ -218,9 +218,9 @@ The image-immutability means to forbid alternations to the environment.
 No installations at runtime, no change in ports, no creation of database-schemas.
 These two principles, while being optional, lead to always reproducible and functional artifacts.
 The main challenge is to migrate existing software and fulfill these properties. 
-Typically, after making the first iterations of your software on your local machine, dockering it will yield to 100 problems at once, not only being frustrating but taking tons of time. 
+Typically, after making the first iterations of the software on a local machine, dockering it will yield to 100 problems at once, not only being frustrating but taking tons of time. 
 
-With Che, this kind of Big-Bang-Migration is not possible, as from the very first step you are working inside of a docker-container.
+With Che, this kind of Big-Bang-Migration is not possible, as from the very first step its working inside of a docker-container.
 The properties above can be hold with every change to the image and checked in a normal review-process. 
 Problems will arise one at a time and be solved one at a time, whether they are about code or operations. 
 Che therefore embraces the core-ideas of DevOps \cite{HUE12}\cite{JA16} and agile software development \cite{EBE16}.
@@ -235,7 +235,7 @@ You can keep multiple projects in a single workspace and launch multiple pods at
 The behavior of this multipod is unified and testable, making a stable release of full environments possible. 
 
 This is one of the primary goals of the DevOps approach \cite{JA16}. 
-The workspace can therefore form totally new ways of programming, such as IoT Applications \footnote{he Plugin Arktik for Eclipse offered IoT Development with Che.While Arktik is unsupported since February 2019, it proved that the concept worked.} or a full setup of micro-services \cite{IV18}, while being agile and reproducible.
+The workspace can therefore form totally new ways of programming, such as IoT Applications \footnote{the Plugin Arktik for Eclipse offered IoT Development with Che.While Arktik is unsupported since February 2019, it proved that the concept worked.} or a full setup of micro-services \cite{IV18}, while being agile and reproducible.
 \subsection{Sharing Results}
 The topic \textit{docker for reproducible research} has already been promoted \cite{BO15} and successfully applied to complex topics \cite{ST16} such as machine learning. 
 As Clark et al. \cite{CL14} have used code of several repositories provided from their university, most of the projects can be expected scientific or experimental, 50\% of the research results were not reproducible. 
@@ -246,13 +246,12 @@ Even more complex environments including multiple components can be made in the 
 Such a pod could test applications working on an cassandra-cluster, fullstack web-applications or network-traffic-simulations.  
 
 Che also offers a whole new way of sharing the results: 
-If a peer wants to inspect the code, he can be granted an account and get hands on the experiment without any setup. 
+If peers wants to inspect the code, they can be granted accounts and get hands on the experiment without any setup. 
 In an further attempt, a common guest-account can be established for anyone interested with read-only rights. 
-This does not only help cooperation and understanding, but is also a good way to verify the results. 
-At the moment we rather blindly trust each other about the results and data presented - we accepted that we are not able to reproduce it anyway or atleast not without inhuman effort. This changes with reproducible experiments, which verify the data and can help peers reviewing something even more important - the experiment itself. 
+This does not only help cooperation and understanding, but is also a good way to verify the results.
 \subsection{Faster Setup}
 Onboarding new teammembers is made easy with Che. 
-A newly joining member does not need to install IDEs, languages, tools and packages, he only needs access to his Che-Account and a singular workspace with every dependency build for him.
+A newly joining member does not need to install IDEs, languages, tools and packages, they only needs access to their Che-Account and a singular workspace with every dependency build for them.
 Depending on the complexitiy of the project this required atmost an hour. 
 While this may seem long, the setup time is dependent on the complexity of the workspace. 
 Setting up a complex workplace will also take more time manually. 
@@ -260,10 +259,10 @@ The work for this is done automatic and remote, so the user is free to dive into
 His workspace will be able to launch the latest version immidieatly.
 It is also notable, that the (technical) onboarding of developers and operators is streamlined into one single process. 
 
-The combination of a quick setup and the usability of every enhancement makes Che especially interesting to recruit troubleshooters into your projects, which solve some of the very specialiced tasks.  
+The combination of a quick setup and the usability of every enhancement makes Che especially interesting to recruit troubleshooters into projects, which solve some of the very specialiced tasks.  
 With  the  artifacts  being  reproducible,  the  expert  can quickly inspect the subject and analyse problems.
-With a finished workspace he can quickly start working. 
-With his changes being also in docker, they will be visible and functional for the whole team.
+With a finished workspace they can quickly start working. 
+With their changes being also in docker, they will be visible and functional for the whole team.
 Therefore,  the  hardest  common  problems  regarding \textit{quick help} are addressed and solved. 
 As an additional minor benefit, it is easy to hibernate resources  using  Che  with  Kubernetes  or  Openshift.
 The workspaces collect metrics like any other container and are therefore scalable on demand. 
@@ -273,7 +272,7 @@ As a further example, the workspaces could be shut down out of normal business-t
 \subsection{Always On}
 The very first handicap coming with Che is the requirement for a good internet connection. 
 While a common office is already equipped with internet, one may want to work on a train or there is simply a problem with the WiFi in the hotel.
-With the possibility to setup Che on localhost, you can learn the basics and routines offline. As the main benefits come in terms of teamwork, this is not a real solution.
+With the possibility to setup Che on localhost, the basics and routines can be learned offline. As the main benefits come in terms of teamwork, this is not a real solution.
 \subsection{Knowledge Required}
 The primary problem with Che is the requirement for an already dense knowledge of cloud related technology.
 Setting up the Workspace, docker-images, build and CI scripts is a complex topic and can not be done by someone getting started. 
@@ -292,7 +291,7 @@ Clark et al. \cite{CL14} describe this rather as a change in the mindset, than i
 	Rather, the needed shift is one of philosophy."}
 \end{centering}
 
-Intuitively this is true: Every developer needs to setup his own workspace – the skills to do this are already there. 
+Intuitively this is true: Every developer needs to setup their own workspace – the skills to do this are already there. 
 The only difference is to setup the workspace in a common, documentated and descriptive way. 
 
 Another problem with Che is the uncommon debugging. 
@@ -377,7 +376,7 @@ From experience, working in this mode becomes exhausting after a period of weeks
 While this experience is highly personal,providing the 
 fastest infrastructure possible, enabling the fastest results,is the better way.
 Making  progress  slower  is much easier than making it faster. 
-In addition, the time spent waiting on your machine learning algorithm or moving to the mac-laboratory on weekends is simply dead time. 
+In addition, the time spent waiting on a machine learning algorithm or moving to the mac-laboratory on weekends is simply dead time. 
 It should therefore be minimized.   
 
 With studies showing basics of good learning experiences \cite{FI05}\cite{TC88} and the impact of motivation \cite{HU95}\cite{DECI93}, it is mandatory for institutions to provide the best possible environment. 
@@ -385,7 +384,7 @@ While many socio-economic factors cannot be grasped at the university or by the 
 Most universities already provide free services, such as software-suites, e-libraries or cloud storage.
 
 Simply providing a technical correct solution (like laboratories) is not enough to provide a good environment.
-One student with a better socio-economic background who can afford a 300\$ GPU will have a better baseline for his education. 
+One student with a better socio-economic background who can afford a 300\$ GPU will have a better baseline for their education. 
 This is simply put unfair.
 With Che, universities can provide a free, good and accessible development environment for every student.
 \section{Conclusion}
