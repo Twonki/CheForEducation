@@ -40,10 +40,9 @@ Eclipse Che \and Cloud-Ready \and Cloud-Native \and DevOps \and Docker \and Kube
 As children we, used to look into the clouds and count sheep. 
 As developers, we look into the clouds and check our applications.  
 Cloud technologies are already state of the art, enabling global players like Google to run applications on a world-scale.
-The market-leaders got their portfolio stocked up with  a  variety  of  different  cloud  technologies,  ranging 
-from cloud computing, cloud storage, database-as-a-service or rentable authentication. 
-Modern Software needs to be scalable, self-contained, and should run on any device, as well as in the cloud.  
-This trend is also visible in Googles searches \ref{fig:digdocker}. 
+The market-leaders stocked up their portfolios with  a  variety  of  different  cloud  technologies,  ranging from cloud computing, cloud storage, database-as-a-service or rentable authentication. 
+Modern software needs to be scalable, self-contained, and should run on any device, as well as in the cloud.  
+This trend is also visible in Google searches \ref{fig:digdocker}. 
 
 \begin{figure}[h]
 	\centering
@@ -58,15 +57,15 @@ These technologies will be summarized in \ref{subsec:Req}.
 
 As cloud-technology such technologies are referred which achieve five attributes: 
 On-demand self-service, broad network-access, resource pooling, rapid elasticity and measured service \cite{ME11}. 
-Cloud technology usually splits into two components:  Infrastructure  and  Services,  where  docker and Kubernetes are considered infrastructure and provide a  platform  to  host  services.  
+Cloud technology usually splits into two components:  infrastructure  and  services,  where  Docker and Kubernetes are considered infrastructure and provide a  platform  to  host  services.  
 Most  of  the  attributes  are (pseudo-) achievable by the infrastructure alone – such as restarting containers. 
 Software running as a service can be put into two categories: 
 “Cloud-Ready” – meaning that it can be run in common cloud environments, such as Kubernetes. 
 The term cloudready  does  usually  not  include  live-scalability. Cloud-readieness is mostly achieved by removing dependencies and either running on bare-linux or being ported into a dockercontainer. 
-Lately the term “Cloud-native” came up \cite{BI17}, referring to software which is built from the very first steps to run inside the cloud. This kind of software is usually running inside a docker-container and both resilient and elasticby design \cite{TO17}.  
+Lately the term “Cloud-native” came up \cite{BI17}, referring to software which is built from the very first steps to run inside the cloud. This kind of software is usually running inside a docker-container and both resilient and elastic by design \cite{TO17}.  
 Resilience refers to the ability of handling failure, both from external sources and restarting/configuring themselves.  
 Elasticy is the ability to request more resources on demand, performing more computations when required, but also to free the resources if not needed. 
-Cloud-ready Software usually achieves only a certain degree of resilience.   
+Cloud-ready software usually achieves only a certain degree of resilience.   
 Cloud-Native applications are aware of their context and collect meaningful metrics for the platform that they cannot reach other services or need more capacities \cite{MIN18}. 
 The applications must also be able to use the gained resources in a productive and healthy way.  
 Modern  cloud-platforms  can  perform  pseudo-scalabilty for cloud-ready-services by starting multiple instances of the same service. 
@@ -81,7 +80,7 @@ Meanwhile,  the  annual  Stackoverflow  developersurvey \cite{SO19} showed, that
 amongst the most wanted and most paid jobs but also tend to be the happiest participants.  
 Every student either wants to be happy or to be rich, making Cloud an interesting topic for their career. 
 
-So why are there no courses? There are many reasons, but the most prominent is the complexity of the topic: 
+SThere are many reasons why there are not many courses, but the most prominent is the complexity of the topic: 
 To build a real cloud native application, the developer must understand virtualization, system-administration, development, 
 infrastructure  and  networking. 
 Additionally, the developer needs to use specific tools, know best practices, tests and work in a team.
@@ -194,7 +193,7 @@ Due to changes being transmitted as HTTP-requests, the current implementation wh
 For version 7 a multi-cursor file-editing will be provided, like it`s common in 
 drive-documents. 
 This is not to be mixed up with having multiple users work on the same project but on their own workspaces. 
-The code, and the workspace itself, can commonly be shared with any versioning tool like Git.
+The code, and the workspace itself, can commonly be shared with any versioning tool such as Git.
 It's mostly dependent on the team which kind of cooperation they prefer. 
 
 As  an  interesting  fact,  Eclipse  Che  is  developed  with Eclipse Che, proving that complex cloud development is possible. 
@@ -321,19 +320,19 @@ Some security risks can also emerge from docker-images as well \cite{PE13} but a
 \section{Benefits for Education}
 \label{sec:EvalEdu}
 In addition to the previous mentioned benefits, there are more points about Che that are especially important for educational purposes, such as courses in the university, professional school or research departments.
-For simplicity I will only elaborate universities, to which I can best relate.
+For simplicity only universities will be addressed.
 \subsection{New motivational and intuitive Courses}
 Eclipse Che provides the possibility to learn primary cloud-technologies hands on and in a simple and supportive manner. 
 Unfortunetally, these topics are currently not widely teached at university.
 Che makes it possible to teach students fundamentals of modern software development.
 Depending on the courses subject, one can either provide scalable software or a running environment. 
 With fitting material provided, it's easy to learn cloud-native development, DevOps or Cloud-Operations. 
-Even complicated topics, like microservices and IoT-applications can easily be adaptet inside Che \cite{IV18} and performed as for example as group-projects with a common goal. 
+Even complicated topics, such as microservices and IoT-applications can easily be adaptet inside Che \cite{IV18} and performed as for example as group-projects with a common goal. 
 The student will need to understand cloud-components as well as team-work to succeed with Che. 
 
 The produced artifacts can simply be shipped as containers, giving comfortable access to the professor. 
 With both the product and the code inside the workspace easily accessible, the professor can grant faster and better feedback for the students, which can have massive impact on learning \cite{HU95}\cite{HU18}.
-Additionally, the professor can provide automated end-to-end tests with tools like Jenkins or TravisCI. 
+Additionally, the professor can provide automated end-to-end tests with tools such as Jenkins or TravisCI. 
 Given such an environment, the student will immideatly get objective feedback, whether their code fulfills the requirements. 
 This immediate feedback is a big motivator and has a positive impact on the learning experience \cite{FI05}. 
 With a clear reason on the usefulness of the task, the visible progress and the direct impact of personal effort should lead to intrinsic motivation, which studies show to have a strong effect on education \cite{DECI93}. 
@@ -364,7 +363,7 @@ While these technologies are great and important for many applications, the requ
 This  hindrance  for  education  is  usually adressed  with  IOS-laboratories  and/or  cloud-resources paid for by university. 
 The topic of socio-economic factors is beyond the scope of this work, but the impact has been analyzed by the PISA Studies \cite{PISA15}, which state that socio-economicly handicapped students fail three times more likely to achieve a basic level of performance.
 According to PISA, this rate has not significally changed since the studies started in 2006. 
-Germany scored on the impact of socioeconomic-factors on education better than it did in 2006 but is worse than global average \cite{OECDCN15}.
+Germany scored better on the impact of socioeconomic-factors on education in 2015 than it did in 2006 but is worse than the global average \cite{OECDCN15}.
 The Mac-Laboratories and rented cloudspace are technically a good attempt at inclusion. 
 But students which are required to get to university to do their assignments are 
 less  likely  to  do  so.
@@ -400,7 +399,7 @@ While the impacts on motivation and the actual learning results are only hypothe
 As Eclipse Che is cutting edge it whatsoever lacks many quality of life features, has some bugs, and the design is undefined to some extend. 
 
 It somewhat is a chance: 
-Instances like a university can have massive impact on the design of Che and drive the project to some extend for their own needs. 
+Instances such as a university can have massive impact on the design of Che and drive the project to some extend for their own needs. 
 With faculties working on the open source project, either providing code and features, or just testing Che in educational environments, both quality issues and missing features can be solved.    
 Now cloud development is only for corporations. 
 There is hardly any chance to successfully learn it at university. 
