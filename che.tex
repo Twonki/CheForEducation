@@ -20,7 +20,7 @@
 \maketitle
 
 \begin{abstract}
-Eclipse Che is a revolutionary cloud-based IDE, inheriting the approach of building cloud-ready software within a 
+Eclipse Che is a revolutionary cloud-based IDE, inheriting the approach of building cloud native software within a 
 remote environment. 
 Instead of developing on a local machine, a remote development-server is accessed via a webbrowser 
 and the artifacts are compiled into docker-containers. 
@@ -46,13 +46,13 @@ This trend is also visible in Google searches \ref{fig:digdocker}.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\linewidth]{imgs/DigDocker}
+	\includegraphics[width=0.75\linewidth]{imgs/DigDocker}
 	\caption{Rising interest in Cloud Tec, Data provided by Google Trends}
 	\label{fig:digdocker}	
 \end{figure}
 
 Figure \ref{fig:digdocker} shows the steadily rising interest in the most popular cloud technologies. 
-Docker is a container-engine enabling OS-Virtualization, Kubernetes is a Container-Platform manager and Openshift is a software-suite based on Kubernetes. 
+Docker is a container-engine enabling OS-Virtualization, Kubernetes is a Container-Platform manager and OpenShift is a software-suite based on Kubernetes. 
 These technologies will be summarized in \ref{subsec:Req}.  
 
 As cloud-technology such technologies are referred which achieve five attributes: 
@@ -61,36 +61,36 @@ Cloud technology usually splits into two components:  infrastructure  and  servi
 Most  of  the  attributes  are (pseudo-) achievable by the infrastructure alone – such as restarting containers. 
 Software running as a service can be put into two categories: 
 “Cloud-Ready” – meaning that it can be run in common cloud environments, such as Kubernetes. 
-The term cloudready  does  usually  not  include  live-scalability. Cloud-readieness is mostly achieved by removing dependencies and either running on bare-linux or being ported into a dockercontainer. 
+The term cloud ready  does  usually  not  include  live-scalability. Cloud-readieness is mostly achieved by removing dependencies and either running on bare-linux or being ported into a docker-container. 
 Lately the term “Cloud-native” came up \cite{BI17}, referring to software which is built from the very first steps to run inside the cloud. This kind of software is usually running inside a docker-container and both resilient and elastic by design \cite{TO17}.  
 Resilience refers to the ability of handling failure, both from external sources and restarting/configuring themselves.  
 Elasticy is the ability to request more resources on demand, performing more computations when required, but also to free the resources if not needed. 
 Cloud-ready software usually achieves only a certain degree of resilience.   
 Cloud-Native applications are aware of their context and collect meaningful metrics for the platform that they cannot reach other services or need more capacities \cite{MIN18}. 
 The applications must also be able to use the gained resources in a productive and healthy way.  
-Modern  cloud-platforms  can  perform  pseudo-scalabilty for cloud-ready-services by starting multiple instances of the same service. 
+Modern  cloud-platforms  can  perform  pseudo-scalability for cloud ready-services by starting multiple instances of the same service. 
 The cloud-platform performs load-balancing between these instances. 
 This naive approach can work out fine, but for example starting two services working on the same database will not yield any real scalability. 
-Another common problem arises when two services are started on the same machine and need the same port, just to name two problems with cloud-ready  software in a cloud environment. 
+Another common problem arises when two services are started on the same machine and need the same port, just to name two problems with cloud ready  software in a cloud environment. 
 
 As Cloud is a central element of modern IT-development, it is strange to see that it is not yet widely teached across 
 universities in Germany \footnote{https://www.hochschulkompass.de/studium/studiengangsuche lists currently only 10 german universities with courses on cloud computing, about 30 courses on virtualization }.
-There are courses to teach either classic virtualization or docker-basics, but the knowledge of full-stack cloudplatforms and cloud-native development is sealed behind corporate doors and conference workshops.
-Meanwhile,  the  annual  Stackoverflow  developersurvey \cite{SO19} showed, that DevOps-engineers are not only 
-amongst the most wanted and most paid jobs but also tend to be the happiest participants.  
+There are courses to teach either classic virtualization or docker-basics, but the knowledge of full-stack cloudplatforms and cloud native development is sealed behind corporate doors and conference workshops.
+Meanwhile,  the  annual  StackOverflow  developer-survey \cite{SO19} showed, that DevOps-engineers are not only 
+among the most wanted and best paid jobs but also tend to be the happiest participants.  
 Every student either wants to be happy or to be rich, making Cloud an interesting topic for their career. 
 
-SThere are many reasons why there are not many courses, but the most prominent is the complexity of the topic: 
+There are many reasons why there are not many courses, but the most prominent is the complexity of the topic: 
 To build a real cloud native application, the developer must understand virtualization, system-administration, development, 
 infrastructure  and  networking. 
 Additionally, the developer needs to use specific tools, know best practices, tests and work in a team.
-All these factors make a high stake for entrance, also  represented in the developersurvey \cite{SO19} which states that most DevOps engineers have a decade of experience, usually in operations topics.
+All these factors make a high stake for entrance, also  represented in the developer-survey \cite{SO19} which states that most DevOps engineers have a decade of experience, usually in operations topics.
 
-Lucky for us, a new open-source software, Eclipse Che, is on the rise to enable everyone for cloud-native development.
+Luckily a new open-source software, Eclipse Che, is on the rise to enable everyone for cloud native development.
 Che is unlike a normal Eclipse-distribution: 
 It is hosted on a server and developers get access with their browser. 
-Instead of installing dependencies, compilers etc. locally, a common workspace is set up, which is shared amongst the programmers. 
-The software build is run inside a docker-container, making it cloud-native by default. 
+Instead of installing dependencies, compilers etc. locally, a common workspace is set up, which is shared among the programmers. 
+The software build is run inside a docker-container, making it cloud native by default. 
 With Version 7 upcoming and prominent support from RedHat, Eclipse Che is not a prototype anymore. 
 The latest distributions of RedHats OpenShift are shipped with Che in default. 
 Therefore, it is worth looking at this possible game-changer. 
@@ -100,28 +100,28 @@ With the first part of this paper, the structure and ideas of Che are explained 
 \label{sec:Che}
 \subsection{Environment and Requirements}
 \label{subsec:Req}
-Che is hosted as a server-application and is already cloudnative. 
+Che is hosted as a server-application and is already cloud native. 
 The only requirements are that either Docker, Kubernetes or OpenShift are available for the installation.
 The differences between these will shortly be summarized.
  
-Docker\footnote{https://www.docker.com/} is a container-plattform, where a container is a standardized unit of of software including the code, dependencies and core-functionalities. 
+Docker\footnote{https://www.docker.com/} is a container-platform, where a container is a standardized unit of of software including the code, dependencies and core-functionalities. 
 A container runs on an OS-Virtualization, originating from LXC, has declared interfaces and can be parameterized. 
 One of the core features is to connect containers for bigger projects, e.g. one 
-database container and one web-server container, which are connected into a virtual network. 
+database container and one web-server-container, which are connected into a virtual network. 
 Docker is mostly famous for this docker-engine, but enriches it with monitoring and logging, as well as the ability to move containers onto different machines.   
 
 Kubernetes\footnote{https://kubernetes.io/} is a container-orchestration-system based on Docker. 
-Kubernetes picked up the growing problem in managing multiple docker-containers by  simplyfing  resource-management. 
+Kubernetes picked up the growing problem in managing multiple docker-containers by  simplifying  resource-management. 
 Additional to deployment and monitoring of container-groups it provides auto-restart mechanisms and scaling based on (custom) metrics. 
 When run on Kubernetes, Che is hosted as a single docker container in the existing platform.
 The term pod, also later used in this paper, refers to a suite of connected containers. 
-An example pod would be a simple two-tier web-application, where the database and webserver are two different, but connected containers.
+An example pod would be a simple two-tier web-application, where the database and web-server are two different, but connected containers.
 
-Openshift\footnote{https://www.openshift.com/} provides a software-suite around Kubernetes with the goal to automate cloud-native development and delivery.
+OpenShift\footnote{https://www.openshift.com/} provides a software-suite around Kubernetes with the goal to automate cloud native development and delivery.
 Notable  additions  include  Jenkins,  Gitea,  Sonarqube and lately Che. 
 Regarding Che there are no notable changes in handling, as Che is simply run on the build in Kubernetes.
-When run on Kubernetes or Docker Che will require two additional containers for authentification with KeyCloack. 
-For Openshift the standard-openshift authentification is used.  
+When run on Kubernetes or Docker Che will require two additional containers for authentication with KeyCloack. 
+For OpenShift the standard-openshift authentication is used.  
 
 Eclipse Che  can be run  on any  base-technology  on  localhost – this is rather for demonstrations as well as for developers working on the Che-Code. 
 When run (locally) on docker, the plugin CheDir enables a portable workspace, 
@@ -129,7 +129,7 @@ which can be used on any docker based Che.
 \subsection{Technology and Workflow}
 \label{subsec:Tec}
 A normal IDE is software on a computer which makes programming easier than doing it in a plain text-editor and commandline. 
-Common tasks for an IDE are dependency management, debugging, refactoring and autocompletion.
+Common tasks for an IDE are dependency management, debugging, refactoring and auto-completion.
 It is important that an IDE is not \textit{required} to develop - Vim can write Java files, the JDK can compile and the JRE can run everything manually from console. 
 With that in mind,an IDE is just a toolstack to make things (a lot) more comfortable – but it also has requirements such as the JDK, the .Jars needed in the classpath etc. as they are only utilized by the IDE.
 This stack can be considered a \textit{workspace} as it contains everything required to work, with the IDE making the workspace comfortable to use.
@@ -174,25 +174,25 @@ When starting a Maven-project, the workspace is initialized with Maven and Java.
 The last component is the Che-administration server. 
 In the administration-server the workspaces are orchestrated and monitored. 
 The authorization is also done at the admin-server and not by every workspace.
-The workspaces can be split amongst multiple machines.
-The runtimes do not necessarily need to be on the same machines as their workspaces. 
+The workspaces can be shipped onto multiple separate machines.
+The runtimes do not necessarily need to be on the same machines as their workspace. 
 Instead of the web-based IDE, a desktop IDE can be connected to the workspace. 
 This is done by mounting the workspaces-filesystem in the desktop  IDE. 
-This  will grant access to autocompletion and other features, but will miss Che specific helpers the web-IDE offers. 
+This  will grant access to auto-completion and other features, but will miss Che specific helpers the web-IDE offers. 
 Mounting remote file systems for development sounds lie an infinite source of problems.
 This feature looks to be rather a proof of concept.
 
 A single workspace can contain multiple projects, whereof every project will have its own runtime. 
 Projects can either share a versioning control or be separated. 
-You can build whole pods in a single workspace with the single containers being the subprojects. 
-You can also compose applications inside the workspaces, meaning that the resulting 
+You can build whole pods in a single workspace with the single containers being the sub-projects. 
+You can also compose applications inside the workspace, meaning that the resulting 
 container of a project can be the base-image of another project. 
-A workspace can be shared amongst multiple users. 
+A workspace can be shared among multiple users. 
 Both will work on the same remote filesystem, altering files simultaneous. 
 Due to changes being transmitted as HTTP-requests, the current implementation when working on the same file is a \textit{last write wins}-policy. 
 For version 7 a multi-cursor file-editing will be provided, like it`s common in 
 drive-documents. 
-This is not to be mixed up with having multiple users work on the same project but on their own workspaces. 
+This is not to be mixed up with having multiple users work on the same project but on their own workspace. 
 The code, and the workspace itself, can commonly be shared with any versioning tool such as Git.
 It's mostly dependent on the team which kind of cooperation they prefer. 
 
@@ -204,7 +204,7 @@ Existing components will be enhanced if working with them becomes troublesome, l
 \label{sec:Eval}
 The primary goals of Che are twofold: 
 First it reduces failure when migrating software into the cloud and enhances the experience of working in a rich remote environment.
-Second is to set up people into existing projects faster and failsafe.
+Second is to set up people into existing projects faster and fail safe.
 
 \subsection{Reproduction and Maintenance}
 The University of Arizona showed \cite{CO16}, that about 50\% of software inspected was not able to build. 
@@ -213,14 +213,14 @@ Experienced programmers are usually able to overcome these issues, given enough 
 
 This problem is solved, if the software is built inside a docker-container and follows the principles of self-containment and image-immutability \cite{BI17}.
 The self-containment principle dictates that  at build-time every required dependency is given, and a fully functional image is created.
-A dockerized maven-application would include java, maven and every required maven package to run the application in the current state. 
+A containerized maven-application would include java, maven and every required maven package to run the application in the current state. 
 The image-immutability means to forbid alternations to the environment. 
 No installations at runtime, no change in ports, no creation of database-schemas.
 These two principles, while being optional, lead to always reproducible and functional artifacts.
 The main challenge is to migrate existing software and fulfill these properties. 
-Typically, after making the first iterations of the software on a local machine, dockering it will yield to 100 problems at once, not only being frustrating but taking tons of time. 
+Typically, after making the first iterations of the software on a local machine, containerization will yield to 100 problems at once, not only being frustrating but taking tons of time. 
 
-With Che, this kind of Big-Bang-Migration is not possible, as from the very first step its working inside of a docker-container.
+With Che, this kind of Big-Bang-Migration is not possible, as from the very first step it is working inside of a docker-container.
 The properties above can be hold with every change to the image and checked in a normal review-process. 
 Problems will arise one at a time and be solved one at a time, whether they are about code or operations. 
 Che therefore embraces the core-ideas of DevOps \cite{HUE12}\cite{JA16} and agile software development \cite{EBE16}.
@@ -232,10 +232,10 @@ Any further development is incremental on the existing images and keeps old arti
 As the code is fully build inside containers and are already run remotely, the famous “It works on my Machine!” is eliminated. 
 This does not only enhance deployments, but also has a big impact on quality assurance and the motivation of developers. 
 You can keep multiple projects in a single workspace and launch multiple pods at once, running the full environment. 
-The behavior of this multipod is unified and testable, making a stable release of full environments possible. 
+The behavior of this multi-pod is unified and testable, making a stable release of full environments possible. 
 
 This is one of the primary goals of the DevOps approach \cite{JA16}. 
-The workspace can therefore form totally new ways of programming, such as IoT Applications \footnote{the Plugin Arktik for Eclipse offered IoT Development with Che.While Arktik is unsupported since February 2019, it proved that the concept worked.} or a full setup of micro-services \cite{IV18}, while being agile and reproducible.
+The workspace can therefore form totally new ways of programming, such as IoT Applications \footnote{the Plugin Arktik for Eclipse offered IoT Development with Che. While Arktik is unsupported since February 2019, it proved that the concept worked.} or a full setup of micro-services \cite{IV18}, while being agile and reproducible.
 \subsection{Sharing Results}
 The topic \textit{docker for reproducible research} has already been promoted \cite{BO15} and successfully applied to complex topics \cite{ST16} such as machine learning. 
 As Clark et al. \cite{CL14} have used code of several repositories provided from their university, most of the projects can be expected scientific or experimental, 50\% of the research results were not reproducible. 
@@ -252,23 +252,23 @@ This does not only help cooperation and understanding, but is also a good way to
 \subsection{Faster Setup}
 Onboarding new teammembers is made easy with Che. 
 A newly joining member does not need to install IDEs, languages, tools and packages, they only needs access to their Che-Account and a singular workspace with every dependency build for them.
-Depending on the complexitiy of the project this required atmost an hour. 
+Depending on the complexity of the project this required at most an hour. 
 While this may seem long, the setup time is dependent on the complexity of the workspace. 
 Setting up a complex workplace will also take more time manually. 
 The work for this is done automatic and remote, so the user is free to dive into the documentation or have some coffee. 
-His workspace will be able to launch the latest version immidieatly.
+His workspace will be able to launch the latest version immediately.
 It is also notable, that the (technical) onboarding of developers and operators is streamlined into one single process. 
 
-The combination of a quick setup and the usability of every enhancement makes Che especially interesting to recruit troubleshooters into projects, which solve some of the very specialiced tasks.  
-With  the  artifacts  being  reproducible,  the  expert  can quickly inspect the subject and analyse problems.
+The combination of a quick setup and the usability of every enhancement makes Che especially interesting to recruit troubleshooters into projects, which solve some of the very specialized tasks.  
+With  the  artifacts  being  reproducible,  the  expert  can quickly inspect the subject and analyze problems.
 With a finished workspace they can quickly start working. 
 With their changes being also in docker, they will be visible and functional for the whole team.
 Therefore,  the  hardest  common  problems  regarding \textit{quick help} are addressed and solved. 
 As an additional minor benefit, it is easy to hibernate resources  using  Che  with  Kubernetes  or  Openshift.
 The workspaces collect metrics like any other container and are therefore scalable on demand. 
-The ability of downscaling the development resources has a big impact on the overall 
+The ability of down-scaling the development resources has a big impact on the overall 
 workload. 
-As a further example, the workspaces could be shut down out of normal business-time. This attribute is crucial for a rented infrastructure, which is paid commonly on both workload and storage. 
+As a further example, the workspace could be shut down out of normal business-time. This attribute is crucial for a rented infrastructure, which is paid usually on both workload and storage. 
 \subsection{Always On}
 The very first handicap coming with Che is the requirement for a good internet connection. 
 While a common office is already equipped with internet, one may want to work on a train or there is simply a problem with the WiFi in the hotel.
@@ -276,10 +276,10 @@ With the possibility to setup Che on localhost, the basics and routines can be l
 \subsection{Knowledge Required}
 The primary problem with Che is the requirement for an already dense knowledge of cloud related technology.
 Setting up the Workspace, docker-images, build and CI scripts is a complex topic and can not be done by someone getting started. 
-This requirement extends when working with a multipod-environment. 
+This requirement extends when working with a multi-pod-environment. 
 While most of the tasks are by themselves rather simple, the bare amount of such tasks (especially when migrating an existing project to Che) requires a broad knowledge.
 This can be done by a single expert user, enabling the other developers  to  use  the  build-routines and  environments provided. 
-However, many problems which arise are related to the cloud-environement and will be hard to solve by a novice user, making him dependent on the expert. 
+However, many problems which arise are related to the cloud-environment and will be hard to solve by a novice user, making him dependent on the expert. 
 It's therefore necessary to get everyone on a certain base-level to solve their own problems, otherwise the expert will be overloaded and the project stuck.  
 
 \subsection{Different Workflow}
@@ -292,24 +292,21 @@ Clark et al. \cite{CL14} describe this rather as a change in the mindset, than i
 \end{centering}
 
 Intuitively this is true: Every developer needs to setup their own workspace – the skills to do this are already there. 
-The only difference is to setup the workspace in a common, documentated and descriptive way. 
+The only difference is to setup the workspace in a common, documented and descriptive way. 
 
 Another problem with Che is the uncommon debugging. 
-As the code is running in a remote-runtime, the common breakpoint  and  valuecheck
-is  missing.  
+As the code is running in a remote-runtime, the common breakpoints  and  value checks are missing.  
 Instead,  one  either must be familiar with the languages commandline-debugging or write good logs and metrics. 
 While this will slow down development, it also offers some benefits: 
 The debugging and error-analysis inside the container is the same as it would be in the productive environment. 
-Having meaningful logs with different loglevels and collecting valuable metrics is 
-in general a good attribute for software in any circumstance. 
+Having meaningful logs with different loglevels and collecting valuable metrics is in general a good attribute for software in any circumstance. 
 It just means additional effort and know-how.  
 
 \subsection{Vulnerability}
 The last problem is the vulnerability to malevolent users. 
 Someone who already is in possession of a valid account can drain the shared resources of a full cluster, therefore blocking  any  other  user  from  work.
 This  can  also  be achieved by human error. 
-Dependent on the setup, the attacker could also auto-deploy hidden spyware into a pro-
-duction environment. 
+Dependent on the setup, the attacker could also auto-deploy hidden spyware into a production environment. 
 While this is also a problem for normal developer teams, the fast pace of deployments with Che requires additional care. 
 A rich CI/CD environment, such as a well-maintained Jenkins may lead to less-detailed code-reviews, as both unit- and end-to-end-tests succeed.  
 It is therefore important to not only restrict access to project resources, but also the double-check and guard the releases.
@@ -322,17 +319,17 @@ In addition to the previous mentioned benefits, there are more points about Che 
 For simplicity only universities will be addressed.
 \subsection{New motivational and intuitive Courses}
 Eclipse Che provides the possibility to learn primary cloud-technologies hands on and in a simple and supportive manner. 
-Unfortunetally, these topics are currently not widely teached at university.
+Unfortunately, these topics are currently not widely teached at university.
 Che makes it possible to teach students fundamentals of modern software development.
 Depending on the courses subject, one can either provide scalable software or a running environment. 
-With fitting material provided, it's easy to learn cloud-native development, DevOps or Cloud-Operations. 
+With fitting material provided, it's easy to learn cloud native development, DevOps or Cloud-Operations. 
 Even complicated topics, such as microservices and IoT-applications can easily be adaptet inside Che \cite{IV18} and performed as for example as group-projects with a common goal. 
 The student will need to understand cloud-components as well as team-work to succeed with Che. 
 
 The produced artifacts can simply be shipped as containers, giving comfortable access to the professor. 
 With both the product and the code inside the workspace easily accessible, the professor can grant faster and better feedback for the students, which can have massive impact on learning \cite{HU95}\cite{HU18}.
 Additionally, the professor can provide automated end-to-end tests with tools such as Jenkins or TravisCI. 
-Given such an environment, the student will immideatly get objective feedback, whether their code fulfills the requirements. 
+Given such an environment, the student will immediately get objective feedback, whether their code fulfills the requirements. 
 This immediate feedback is a big motivator and has a positive impact on the learning experience \cite{FI05}. 
 With a clear reason on the usefulness of the task, the visible progress and the direct impact of personal effort should lead to intrinsic motivation, which studies show to have a strong effect on education \cite{DECI93}. 
 
@@ -342,7 +339,7 @@ Other studies have shown that only automated and unified testing is not benefici
 But the tools provided by Che and CI/CD slim down the overhead until both personal feedback and automated can be supplied. 
 If the whole classroom utilizes this system, the educator can also monitor who is having trouble in an automated manner. 
 With a single investment for the tests, feedback for every student is granted at every time. 
-With the single investment of providing a running Che instance (and a short lecture how to use it), feedback on the artifacts and code can be immidieatly granted to every student, without having the overhead of setting up workspaces. 
+With the single investment of providing a running Che instance (and a short lecture how to use it), feedback on the artifacts and code can be immediately granted to every student, without having the overhead of setting up the workspace. 
 These investments can be done before the course starts at any time and can be reused.
 It's not dependent on the individual students. 
 
@@ -352,16 +349,16 @@ Another benefit for education is about fairness in IT-Education.
 
 \subsection{Equality and Accessibility}
 With access to a university Che workspace, every person can develop the same software in the same environment. 
-A wellknown problem is the necessity of an IOS-build-device for IOS-appdevelopment.
+A well known problem is the necessity of an IOS-build-device for IOS-appdevelopment.
 Students which are limited in their access to the university-laboratory or cannot afford a mac are therefore handicapped.
 Another  rising  problem  are  GPU-accelerated  machine learning algorithms. 
 Depending on the task, training neural networks can be 20 times faster if a CUDA-compatible graphics card is used. 
-The range for these graphiccards start at 300\$ and are therefore not commodity hardware,especially for students.  
+The range for these graphic-cards start at 300\$ and are therefore not commodity hardware,especially for students.  
 While these technologies are great and important for many applications, the required technologies are exclusive due to  their  costs.
 
-This  hindrance  for  education  is  usually adressed  with  IOS-laboratories  and/or  cloud-resources paid for by university. 
+This  hindrance  for  education  is  usually addressed  with  IOS-laboratories  and/or  cloud-resources paid for by university. 
 The topic of socio-economic factors is beyond the scope of this work, but the impact has been analyzed by the PISA Studies \cite{PISA15}, which state that socio-economicly handicapped students fail three times more likely to achieve a basic level of performance.
-According to PISA, this rate has not significally changed since the studies started in 2006. 
+According to PISA, this rate has not significantly changed since the studies started in 2006. 
 Germany scored better on the impact of socioeconomic-factors on education in 2015 than it did in 2006 but is worse than the global average \cite{OECDCN15}.
 The Mac-Laboratories and rented cloudspace are technically a good attempt at inclusion. 
 But students which are required to get to university to do their assignments are 
