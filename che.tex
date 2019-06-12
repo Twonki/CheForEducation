@@ -20,7 +20,7 @@
 \maketitle
 
 \begin{abstract}
-Eclipse Che is a revolutionary cloud-based IDE, inheriting the approach of building cloud native software within a 
+Eclipse Che is a open source cloud-based IDE, inheriting the approach of building cloud native software within a 
 remote environment. 
 Instead of developing on a local machine, a remote development-server is accessed via web-browser 
 and the artifacts are compiled into docker-containers. 
@@ -78,7 +78,7 @@ universities in Germany \footnote{https://www.hochschulkompass.de/studium/studie
 There are courses to teach either classic virtualization or docker-basics, but the knowledge of full-stack cloud-platforms and cloud native development is sealed behind corporate doors and conference workshops.
 Meanwhile,  the  annual  StackOverflow  developer-survey \cite{SO19} showed, that DevOps-engineers are not only 
 among the most wanted and best paid jobs but also tend to be the happiest participants.  
-Every student either wants to be happy or to be rich, making Cloud an interesting topic for their career. 
+Every student either wants to be happy or to be rich (some want both), making Cloud an interesting topic for their career. 
 
 There are many reasons why there are not many courses, but the most prominent is the complexity of the topic: 
 To build a real cloud native application, the developer must understand virtualization, system-administration, development, 
@@ -178,8 +178,7 @@ The workspaces can be shipped onto multiple separate machines.
 The runtimes do not necessarily need to be on the same machines as their workspace. 
 Instead of the web-based IDE, a desktop IDE can be connected to the workspace. 
 This is done by mounting the workspaces-filesystem in the desktop  IDE. 
-This  will grant access to auto-completion and other features, but will miss Che specific helpers the web-IDE offers. 
-Mounting remote file systems for development sounds lie an infinite source of problems.
+This  will grant access to auto-completion and other features, but will miss Che specific helpers the web-IDE offers.
 This feature looks to be rather a proof of concept.
 
 A single workspace can contain multiple projects, whereof every project will have its own runtime. 
@@ -191,14 +190,10 @@ A workspace can be shared among multiple users.
 Both will work on the same remote filesystem, altering files simultaneous. 
 Due to changes being transmitted as HTTP-requests, the current implementation when working on the same file is a \textit{last write wins}-policy. 
 For version 7 a multi-cursor file-editing will be provided, like it`s common in 
-drive-documents. 
+OneDrive-documents. 
 This is not to be mixed up with having multiple users work on the same project but on their own workspace. 
 The code, and the workspace itself, can commonly be shared with any versioning tool such as Git.
 It's mostly dependent on the team which kind of cooperation they prefer. 
-
-As  an  interesting  fact,  Eclipse  Che  is  developed  with Eclipse Che, proving that complex cloud development is possible. 
-This so-called \textit{dogfooding} usually leads to a product which puts requirements over any a-priori design or foreign interests.  
-Existing components will be enhanced if working with them becomes troublesome, leaving a clean and valuable core product. 
 
 \section{General Benefits and Handicaps}
 \label{sec:Eval}
@@ -206,7 +201,7 @@ The primary goals of Che are twofold:
 First it reduces failure when migrating software into the cloud and enhances the experience of working in a rich remote environment.
 Second is to set up people into existing projects faster and fail safe.
 
-\subsection{Reproduction and Maintenance}
+\subsection{Reproducibility and Maintenance}
 The University of Arizona showed \cite{CO16}, that about 50\% of software inspected was not able to build. 
 Common reasons are missing, changed or faulty dependencies, leading to the common term of \textit{dependency hell} as well as unclear documentation. 
 Experienced programmers are usually able to overcome these issues, given enough time. This continues to be an issue \cite{CL14}, and without a different approach probably always will be. 
@@ -238,7 +233,7 @@ This is one of the primary goals of the DevOps approach \cite{JA16}.
 The workspace can therefore form totally new ways of programming, such as IoT Applications \footnote{the Plugin Arktik for Eclipse offered IoT Development with Che. While Arktik is unsupported since February 2019, it proved that the concept worked.} or a full setup of micro-services \cite{IV18}, while being agile and reproducible.
 \subsection{Sharing Results}
 The topic \textit{docker for reproducible research} has already been promoted \cite{BO15} and successfully applied to complex topics \cite{ST16} such as machine learning. 
-As Clark et al. \cite{CL14} have used code of several repositories provided from their university, most of the projects can be expected scientific or experimental, 50\% of the research results were not reproducible. 
+As Clark et al. \cite{CL14} have used code of several repositories provided from their university, most of the projects can be expected scientific or experimental, therefore 50\% of the research results were not reproducible. 
 
 The idea to not only ship code, but ship the experiment as a whole makes reproduction much easier. 
 With Che (and using best practices for containers) the experiments done will be containerized and therefore reproducible. 
@@ -270,7 +265,7 @@ The ability of down-scaling the development resources has a big impact on the ov
 workload. 
 As a further example, the workspace could be shut down out of normal business-time. This attribute is crucial for a rented infrastructure, which is paid usually on both workload and storage. 
 \subsection{Always On}
-The very first handicap coming with Che is the requirement for a good internet connection. 
+The very first drawback coming with Che is the requirement for a good internet connection. 
 While a common office is already equipped with internet, one may want to work on a train or there is simply a problem with the WiFi in the hotel.
 With the possibility to setup Che on localhost, the basics and routines can be learned offline. As the main benefits come in terms of teamwork, this is not a real solution.
 \subsection{Knowledge Required}
@@ -322,13 +317,13 @@ Eclipse Che provides the possibility to learn primary cloud-technologies hands o
 Unfortunately, these topics are currently not widely teached at university.
 Che makes it possible to teach students fundamentals of modern software development.
 Depending on the courses subject, one can either provide scalable software or a running environment. 
-With fitting material provided, it's easy to learn cloud native development, DevOps or Cloud-Operations. 
+With suitable material provided, it's easy to learn cloud native development, DevOps or Cloud-Operations. 
 Even complicated topics, such as micro-services and IoT-applications can easily be adapted inside Che \cite{IV18} and performed as for example as group-projects with a common goal. 
 The student will need to understand cloud-components as well as team-work to succeed with Che. 
 
-The produced artifacts can simply be shipped as containers, giving comfortable access to the professor. 
-With both the product and the code inside the workspace easily accessible, the professor can grant faster and better feedback for the students, which can have massive impact on learning \cite{HU95}\cite{HU18}.
-Additionally, the professor can provide automated end-to-end tests with tools such as Jenkins or TravisCI. 
+The produced artifacts can simply be shipped as containers, giving comfortable access to the teaching staff. 
+With both the product and the code inside the workspace easily accessible, the teaching staff can grant faster and better feedback for the students, which can have massive impact on learning \cite{HU95}\cite{HU18}.
+Additionally, the teacher can provide automated end-to-end tests with tools such as Jenkins or TravisCI. 
 Given such an environment, the student will immediately get objective feedback, whether their code fulfills the requirements. 
 This immediate feedback is a big motivator and has a positive impact on the learning experience \cite{FI05}. 
 With a clear reason on the usefulness of the task, the visible progress and the direct impact of personal effort should lead to intrinsic motivation, which studies show to have a strong effect on education \cite{DECI93}. 
@@ -392,7 +387,7 @@ With more and more tools making it easier, it's just a matter of time until clou
 
 With Eclipse Che many problems about teaching students these Cloud Skills and reducing the initial scope for learning, are addressed. 
 While the impacts on motivation and the actual learning results are only hypothetical, most of the technical requirements are solved by Che.  
-As Eclipse Che is cutting edge it whatsoever lacks many quality of life features, has some bugs, and the design is undefined to some extend. 
+As Eclipse Che is cutting edge it whatsoever lacks many quality of life features, has some bugs, and the preferred design is undefined to some extend. 
 
 It somewhat is a chance: 
 Instances such as a university can have massive impact on the design of Che and drive the project to some extend for their own needs. 
