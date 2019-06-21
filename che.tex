@@ -5,7 +5,7 @@
 \documentclass[english,utf8]{lni}
 
 \begin{document}
-\title[theoretical evaluation of the potential advantages of cloud IDEs for research and didactic]{Theoretical evaluation of the potential advantages of cloud IDEs for research and didactic}
+\title[theoretical evaluation of the potential advantages of cloud IDEs for research and didactics]{Theoretical evaluation of the potential advantages of cloud IDEs for research and didactics}
 \subtitle{on the example of Eclipse Che} % falls benötigt
 \author[Leonhard Applis]
 {Leonhard Applis \footnote{Technische Hochschule Georg Simon Ohm, \email{Leonhard.Applis@Protonmail.com}}}
@@ -232,9 +232,7 @@ As the code is fully build inside containers and are already run remotely, the f
 This does not only enhance deployments, but also has a big impact on quality assurance and the motivation of developers. 
 You can keep multiple projects in a single workspace and launch multiple pods at once, running the full environment. 
 The behavior of this multi-pod is unified and testable, making a stable release of full environments possible. 
-
 This is one of the primary goals of the DevOps approach \cite{JA16}. 
-The workspace can therefore form totally new ways of programming, such as IoT Applications \footnote{the Plugin Arktik for Eclipse offered IoT Development with Che. While Arktik is unsupported since February 2019, it proved that the concept worked.} or a full setup of micro-services \cite{IV18}, while being agile and reproducible.
 \subsection{Sharing Results}
 The topic \textit{docker for reproducible research} has already been promoted \cite{BO15} and successfully applied to complex topics \cite{ST16} such as machine learning. 
 As Clark et al. \cite{CL14} have used code of several repositories provided from their university, most of the projects can be expected scientific or experimental, therefore 50\% of the research results were not reproducible. 
@@ -242,7 +240,6 @@ As Clark et al. \cite{CL14} have used code of several repositories provided from
 The idea to not only ship code, but ship the experiment as a whole makes reproduction much easier. 
 With Che (and using best practices for containers) the experiments done will be containerized and therefore reproducible. 
 Even more complex environments including multiple components can be made in the same paradigms forming a pod. 
-Such a pod could test applications working on an Cassandra-cluster, fullstack web-applications or network-traffic-simulations.  
 
 Che also offers a whole new way of sharing the results: 
 If peers wants to inspect the code, they can be granted accounts and get hands on the experiment without any setup. 
@@ -260,7 +257,6 @@ It is also notable, that the (technical) onboarding of developers and operators 
 
 The combination of a quick setup and the usability of every enhancement makes Che especially interesting to recruit troubleshooters into projects, which solve some of the very specialized tasks.  
 With  the  artifacts  being  reproducible,  the  expert  can quickly inspect the subject and analyze problems.
-With a finished workspace they can quickly start working. 
 With their changes being also in docker, they will be visible and functional for the whole team.
 Therefore,  the  hardest  common  problems  regarding \textit{quick help} are addressed and solved. 
 As an additional minor benefit, it is easy to hibernate resources  using  Che  with  Kubernetes  or  Openshift.
@@ -268,10 +264,6 @@ The workspaces collect metrics like any other container and are therefore scalab
 The ability of down-scaling the development resources has a big impact on the overall 
 workload. 
 As a further example, the workspace could be shut down out of normal business-time. This attribute is crucial for a rented infrastructure, which is paid usually on both workload and storage. 
-\subsection{Always On}
-The very first drawback coming with Che is the requirement for a good internet connection. 
-While a common office is already equipped with internet, one may want to work on a train or there is simply a problem with the WiFi in the hotel.
-With the possibility to setup Che on localhost, the basics and routines can be learned offline. As the main benefits come in terms of teamwork, this is not a real solution.
 \subsection{Knowledge Required}
 The primary problem with Che is the requirement for an already dense knowledge of cloud related technology.
 Setting up the Workspace, docker-images, build and CI scripts is a complex topic and can not be done by someone getting started. 
@@ -333,19 +325,12 @@ If the whole classroom utilizes this system, the educator can also monitor who i
 With a single investment for the tests, feedback for every student is granted at every time. 
 With the single investment of providing a running Che instance (and a short lecture how to use it), feedback on the artifacts and code can be immediately granted to every student, without having the overhead of setting up the workspace. 
 These investments can be done before the course starts at any time and can be reused.
-It's not dependent on the individual students. 
-
-In general, this approach enables studies to be less about the subject, but instead to be about learning the subject. 
-This can be considered one of the primary goals of university courses. 
-Another benefit for education is about fairness in IT-Education.  
-
 \subsection{Equality and Accessibility}
 With access to a university Che workspace, every person can develop the same software in the same environment. 
 A well known problem is the necessity of an IOS-build-device for IOS-appdevelopment.
 Students which are limited in their access to the university-laboratory or cannot afford a mac are therefore handicapped.
 Another  rising  problem  are  GPU-accelerated  machine learning algorithms. 
-Depending on the task, training neural networks can be 20 times faster if a CUDA-compatible graphics card is used. 
-The range for these graphic-cards start at 300\$ and are therefore not commodity hardware,especially for students.  
+Depending on the task, training neural networks can be 20 times faster if a CUDA-compatible graphics card is used.
 While these technologies are great and important for many applications, the required technologies are exclusive due to  their  costs.
 
 This  hindrance  for  education  is  usually addressed  with  IOS-laboratories  and/or  cloud-resources paid for by university. 
