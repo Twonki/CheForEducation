@@ -40,7 +40,7 @@ Eclipse Che \and Cloud Native \and DevOps \and Docker \and Kubernetes \and Highe
 \label{sec:Introduction}
 Children look into the clouds and count sheep. 
 Developers look into the clouds and check their applications.  
-Cloud technologies are already state of the art, enabling global players like Google to run applications on a world-scale.
+Cloud technologies are already state of the art, enabling global players to run applications on a world-scale.
 The market-leaders stocked up their portfolios with  a  variety  of  different  cloud  technologies,  ranging from cloud computing, cloud storage, database-as-a-service or rented authentication. 
 Modern software needs to be scalable, self-contained, and should run on any device, as well as in the cloud.  
 This trend is also visible in Google searches \ref{fig:digdocker}. 
@@ -127,6 +127,7 @@ For OpenShift the standard-openshift authentication is used.
 Eclipse Che  can be run  on any  base-technology  on  localhost – this is rather for demonstrations as well as for developers working on the Che-Code. 
 When run (locally) on docker, the plugin CheDir enables a portable workspace, 
 which can be used on any docker based Che.
+
 \subsection{Technology and Workflow}
 \label{subsec:Tec}
 A normal IDE is software on a computer which makes programming easier than doing it in a plain text-editor and commandline. 
@@ -185,16 +186,21 @@ This feature looks to be rather a proof of concept.
 A single workspace can contain multiple projects, whereof every project will have its own runtime. 
 Projects can either share a versioning control or be separated. 
 You can build whole pods in a single workspace with the single containers being the sub-projects. 
-You can also compose applications inside the workspace, meaning that the resulting 
-container of a project can be the base-image of another project. 
+You can also compose applications inside the workspace, meaning that the resulting container of a project can be the base-image of another project. 
 A workspace can be shared among multiple users. 
 Both will work on the same remote filesystem, altering files simultaneous. 
 Due to changes being transmitted as HTTP-requests, the current implementation when working on the same file is a \textit{last write wins}-policy. 
-For version 7 a multi-cursor file-editing will be provided, like it`s common in 
-OneDrive-documents. 
+For version 7 a multi-cursor file-editing will be provided, like it`s common in OneDrive-documents. 
 This is not to be mixed up with having multiple users work on the same project but on their own workspace. 
 The code, and the workspace itself, can commonly be shared with any versioning tool such as Git.
 It's mostly dependent on the team which kind of cooperation they prefer. 
+
+Eclipse Che originates from the Eclise-Theia project. 
+Theia focussed (only) on the idea of having a remote workspace and access it via browser. 
+Che uses Theia and enriches it with idea of capsulation and containerization. 
+An alternative to Eclipse Che is Amazons Cloud9\footnote{https://aws.amazon.com/cloud9/}, which is free for students. 
+Microsoft is currently working on a similiar solution, the plattform Coder\footnote{https://coder.com/} is on a state similiar to Eclipse-Theia. 
+Che is the only completely free and open sourced Cloud-IDE. 
 
 \section{General Benefits and Handicaps}
 \label{sec:Eval}
