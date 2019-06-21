@@ -64,7 +64,7 @@ Lately the term \textit{Cloud native} came up \cite{BI17}, referring to software
 Resilience refers to the ability of handling failure, both from external sources and restarting/configuring themselves.  
 Elasticity is the ability to request more resources on demand, performing more computations when required, but also to free the resources if not needed. 
 Cloud-ready software usually achieves only a certain degree of resilience.   
-Cloud-Native applications are aware of their context and collect meaningful metrics for the platform that they cannot reach other services or need more capacities \cite{MIN18}. 
+Cloud-Native applications are aware of their context and collect meaningful metrics for the platform that they cannot reach other services or need more capacities. 
 The applications must also be able to use the gained resources in a productive and healthy way.  
 Modern  cloud-platforms  can  perform  pseudo-scalability for cloud ready-services by starting multiple instances of the same service. 
 The cloud-platform performs load-balancing between these instances. 
@@ -222,7 +222,7 @@ Typically, after making the first iterations of the software on a local machine,
 With Che, this kind of Big-Bang-Migration is not possible, as from the very first step it is working inside of a docker-container.
 The properties above can be hold with every change to the image and checked in a normal review-process. 
 Problems will arise one at a time and be solved one at a time, whether they are about code or operations. 
-Che therefore embraces the core-ideas of DevOps \cite{HUE12}\cite{JA16} and agile software development \cite{EBE16}.
+Che therefore embraces the core-ideas of DevOps \cite{JA16} and agile software development \cite{EBE16}.
 That being said, of course it's possible to big-bang-migrate into Che, causing the normal problem mentioned above. 
 However, once the errors are resolved, every further development will work more agile by design.
 
@@ -233,6 +233,7 @@ This does not only enhance deployments, but also has a big impact on quality ass
 You can keep multiple projects in a single workspace and launch multiple pods at once, running the full environment. 
 The behavior of this multi-pod is unified and testable, making a stable release of full environments possible. 
 This is one of the primary goals of the DevOps approach \cite{JA16}. 
+\newpage
 \subsection{Sharing Results}
 The topic \textit{docker for reproducible research} has already been promoted \cite{BO15} and successfully applied to complex topics \cite{ST16} such as machine learning. 
 As Clark et al. \cite{CL14} have used code of several repositories provided from their university, most of the projects can be expected scientific or experimental, therefore 50\% of the research results were not reproducible. 
@@ -351,6 +352,7 @@ Simply providing a technical correct solution (like laboratories) is not enough 
 One student with a better socio-economic background who can afford a 300\$ GPU will have a better baseline for their education. 
 This is simply put unfair.
 With Che, universities can provide a free, good and accessible development environment for every student.
+\newpage
 \section{Conclusion}
 \label{sec:Conclusion}
 Cloud technology will be dominant in the foreseeable future. 
