@@ -40,18 +40,6 @@ Developers look into the clouds and check their applications.
 Cloud technologies are already state of the art, enabling global players to run applications on a world-scale.
 The market-leaders stocked up their portfolios with  a  variety  of  different  cloud  technologies,  ranging from cloud computing, cloud storage, database-as-a-service or rented authentication. 
 Modern software needs to be scalable, self-contained, and should run on any device, as well as in the cloud.  
-This trend is also visible in Google searches \ref{fig:digdocker}. 
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.75\linewidth]{imgs/DigDocker}
-	\caption{Rising interest in Cloud Tec, Data provided by Google Trends}
-	\label{fig:digdocker}	
-\end{figure}
-
-Figure \ref{fig:digdocker} shows the steadily rising interest in the most popular cloud technologies. 
-Docker is a container-engine enabling OS-Virtualization, Kubernetes is a Container-Platform manager and OpenShift is a software-suite based on Kubernetes. 
-These technologies will be summarized in \ref{subsec:Req}.  
 
 As cloud-technology such technologies are referred which achieve five attributes: 
 On-demand self-service, broad network-access, resource pooling, rapid elasticity and measured service \cite{ME11}. 
@@ -141,7 +129,6 @@ Che consists of three main components shown in Figure \ref{fig:cheworkflow}\foot
 	\caption[Che Workflow]{Che Workflow}
 	\label{fig:cheworkflow}
 \end{figure}
-\newpage
 
 \begin{enumerate}
 	\item Workspaces, including Runtimes and IDEs
@@ -233,7 +220,7 @@ This does not only enhance deployments, but also has a big impact on quality ass
 You can keep multiple projects in a single workspace and launch multiple pods at once, running the full environment. 
 The behavior of this multi-pod is unified and testable, making a stable release of full environments possible. 
 This is one of the primary goals of the DevOps approach \cite{JA16}. 
-\newpage
+
 \subsection{Sharing Results}
 The topic \textit{docker for reproducible research} has already been promoted \cite{BO15} and successfully applied to complex topics \cite{ST16} such as machine learning. 
 As Clark et al. \cite{CL14} have used code of several repositories provided from their university, most of the projects can be expected scientific or experimental, therefore 50\% of the research results were not reproducible. 
@@ -265,12 +252,6 @@ The workspaces collect metrics like any other container and are therefore scalab
 The ability of down-scaling the development resources has a big impact on the overall 
 workload. 
 As a further example, the workspace could be shut down out of normal business-time. This attribute is crucial for a rented infrastructure, which is paid usually on both workload and storage. 
-\subsection{Knowledge Required}
-The primary problem with Che is the requirement for an already dense knowledge of cloud related technology.
-Setting up the Workspace, docker-images, build and CI scripts is a complex topic and can not be done by someone getting started. 
-This requirement extends when working with a multi-pod-environment. 
-While most of the tasks are by themselves rather simple, the bare amount of such tasks (especially when migrating an existing project to Che) requires a broad knowledge.
-This can be done by a single expert user, enabling the other developers  to  use  the  build-routines and  environments provided.
 
 \subsection{Different Workflow}
 Additionally, the missing default “build and run” is a paradigm-shift for many developers, which will take a while to get used to. 
@@ -292,11 +273,6 @@ The debugging and error-analysis inside the container is the same as it would be
 Having meaningful logs with different loglevels and collecting valuable metrics is in general a good attribute for software in any circumstance. 
 It just means additional effort and know-how.  
 
-\subsection{Vulnerability}
-The last problem is the vulnerability to malevolent users. 
-Someone who already is in possession of a valid account can drain the shared resources of a full cluster, therefore blocking  any  other  user  from  work.
-This  can  also  be achieved by human error. 
-It is therefore important to not only restrict access to project resources, but also the double-check and guard the releases.
 \section{Benefits for Education}
 \label{sec:EvalEdu}
 In addition to the previous mentioned benefits, there are more points about Che that are especially important for educational purposes, such as courses in the university, professional school or research departments.
